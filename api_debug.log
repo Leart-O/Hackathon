@@ -1,0 +1,200 @@
+HTTP Code: 401
+Response: {
+    "error": {
+        "message": "Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "invalid_api_key"
+    }
+}
+
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ]
+}
+API Error: Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.
+HTTP Code: 401
+Response: {
+    "error": {
+        "message": "Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "invalid_api_key"
+    }
+}
+
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ]
+}
+API Error: Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.
+HTTP Code: 401
+Response: {
+    "error": {
+        "message": "Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "invalid_api_key"
+    }
+}
+
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ]
+}
+API Error: Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.
+HTTP Code: 401
+Response: {
+    "error": {
+        "message": "Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.",
+        "type": "invalid_request_error",
+        "param": null,
+        "code": "invalid_api_key"
+    }
+}
+
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "phoyo"
+        }
+    ]
+}
+API Error: Incorrect API key provided: fd6b7518********************6e6f. You can find your API key at https://platform.openai.com/account/api-keys.
+HTTP Code: 403
+Response: {"requestId":"30790b99-3e49-4954-818e-7fca6cf3fa8b","statusCode":403,"timestamp":"2025-05-24T13:20:41.691Z","path":"/v1/chat/completions","meta":{"status":"failed","detail":{"name":"tier_2:api_request","reason":"insufficent_resource"}},"message":"You have exhausted the available [tier_2:api_request] resource limit. Update your payment method to continue using the service. For more information please visit https://aimlapi.com/app/billing"}
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photo"
+        }
+    ]
+}
+HTTP Code: 201
+Response: {"id":"chatcmpl-Baj5mdUC96DHy3A1OHgmQOUnYbVYK","object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","logprobs":null,"message":{"role":"assistant","content":"Your instruction is incomplete. Could you please provide more details? Do you want me to describe a photo or search for a photo?","refusal":null,"annotations":[]}}],"created":1748092842,"model":"gpt-4-0613","usage":{"prompt_tokens":504,"completion_tokens":3276,"total_tokens":3780,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}},"system_fingerprint":null}
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photo"
+        }
+    ]
+}
+HTTP Code: 403
+Response: {"requestId":"e021331c-91c6-4dff-a1ab-3168d0f56889","statusCode":403,"timestamp":"2025-05-24T13:21:03.524Z","path":"/v1/chat/completions","meta":{"status":"failed","detail":{"name":"tier_2:api_request","reason":"insufficent_resource"}},"message":"You have exhausted the available [tier_2:api_request] resource limit. Update your payment method to continue using the service. For more information please visit https://aimlapi.com/app/billing"}
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photo"
+        },
+        {
+            "role": "assistant",
+            "content": "Your instruction is incomplete. Could you please provide more details? Do you want me to describe a photo or search for a photo?"
+        },
+        {
+            "role": "user",
+            "content": "what is a photo"
+        }
+    ]
+}
+HTTP Code: 403
+Response: {"requestId":"776837bd-96d1-4d7b-a80b-ac97bd8a811f","statusCode":403,"timestamp":"2025-05-24T13:21:12.746Z","path":"/v1/chat/completions","meta":{"status":"failed","detail":{"name":"tier_2:api_request","reason":"insufficent_resource"}},"message":"You have exhausted the available [tier_2:api_request] resource limit. Update your payment method to continue using the service. For more information please visit https://aimlapi.com/app/billing"}
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photo"
+        },
+        {
+            "role": "assistant",
+            "content": "Your instruction is incomplete. Could you please provide more details? Do you want me to describe a photo or search for a photo?"
+        },
+        {
+            "role": "user",
+            "content": "what is a photo"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ]
+}
+HTTP Code: 403
+Response: {"requestId":"feb23289-f0d7-42a9-adeb-ea735609b514","statusCode":403,"timestamp":"2025-05-24T13:21:13.287Z","path":"/v1/chat/completions","meta":{"status":"failed","detail":{"name":"tier_2:api_request","reason":"insufficent_resource"}},"message":"You have exhausted the available [tier_2:api_request] resource limit. Update your payment method to continue using the service. For more information please visit https://aimlapi.com/app/billing"}
+Error: 
+Payload: {
+    "model": "gpt-4",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photo"
+        },
+        {
+            "role": "assistant",
+            "content": "Your instruction is incomplete. Could you please provide more details? Do you want me to describe a photo or search for a photo?"
+        },
+        {
+            "role": "user",
+            "content": "what is a photo"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ]
+}
