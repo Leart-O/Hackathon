@@ -54,6 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
         'temperature' => 0.7,
     ];
 
+    // Add a strict system prompt for academic topics only
+    array_unshift($payload['messages'], [
+        'role' => 'system',
+        'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
+    ]);
+
     foreach ($messages as $msg) {
         $payload['messages'][] = [
             'role' => $msg['role'],

@@ -13,8 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [
-            ['role' => 'system', 'content' => 'You are a helpful assistant that creates multiple choice quizzes for students. Output ONLY valid JSON, and nothing else, in the following format (do not include any explanation or markdown): [{"question":"...","options":["A","B","C","D"],"answer":"A"}, ...]. Surround your JSON with <json>...</json> tags.'],
-            ['role' => 'user', 'content' => "Create a short quiz (3-5 questions, multiple choice only) to help me study the following topic:\n\n" . $summary]
+            [
+                'role' => 'system',
+                'content' => 'You are a helpful assistant for students. Only generate quizzes for school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If the user asks for a quiz on a non-academic topic (like TV shows, celebrities, pop culture, etc.), respond with a plain English message (not JSON) that says: "Sorry, I can only generate quizzes for academic topics." If the topic is academic, output ONLY valid JSON, and nothing else, in the following format: [{"question":"...","options":["A","B","C","D"],"answer":"A"}, ...]. Surround your JSON with <json>...</json> tags.'
+            ],
+            [
+                'role' => 'user',
+                'content' => "Create a short quiz (3-5 questions, multiple choice only) to help me study the following topic:\n\n" . $summary
+            ]
         ],
         'max_tokens' => 700,
         'temperature' => 0.7,
@@ -50,7 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     if (is_array($quiz)) {
         echo json_encode(['quiz' => $quiz]);
     } else {
-        echo json_encode(['error' => 'Failed to parse quiz. Try again.']);
+        // If not valid JSON, show the AI's message as an error
+        $refusal = trim(strip_tags($content));
+        echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again.']);
     }
     exit;
 }

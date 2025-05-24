@@ -248,3 +248,113 @@ Payload: {
     "max_tokens": 2000,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+{"id":"gen-1748116874-O78ExFphKFexOepfVbf6","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748116874,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"It seems like you're mentioning \"Hannah Montana,\" which is a television show. If you have questions about the show that relate to media studies or how television can impact culture and society, I can help with that. Otherwise, please let me know if you have any other academic-related questions!","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":78,"completion_tokens":58,"total_tokens":136,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, politely refuse and remind them you only help with academic topics."
+        },
+        {
+            "role": "user",
+            "content": "Hannah Montana"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1748116901-ZvZAoOvA6KOsoSaQtLiD","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748116901,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"\"Hannah Montana\" is a television show that aired on the Disney Channel from 2006 to 2011. It is a family-friendly comedy series that follows the life of Miley Stewart, a teenage girl who lives a double life as a regular high school student and as the famous pop singer Hannah Montana. The show explores themes of identity, friendship, and the challenges of balancing personal and professional life.\n\nFrom an academic perspective, you might explore how \"Hannah Montana\" addresses issues such as adolescent identity and the influence of celebrity culture. Additionally, the show can be analyzed for its impact on teen and pre-teen audiences during its run. If you have any specific questions about the show's themes or cultural impact, feel free to ask!","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":155,"completion_tokens":147,"total_tokens":302,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, politely refuse and remind them you only help with academic topics."
+        },
+        {
+            "role": "user",
+            "content": "Hannah Montana"
+        },
+        {
+            "role": "assistant",
+            "content": "It seems like you're mentioning \"Hannah Montana,\" which is a television show. If you have questions about the show that relate to media studies or how television can impact culture and society, I can help with that. Otherwise, please let me know if you have any other academic-related questions!"
+        },
+        {
+            "role": "user",
+            "content": "tell me about the show i want to know more please"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+{"id":"gen-1748117171-2kCgqtTa1EDkjyThaJuQ","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748117171,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Sorry, I can only answer questions about academic topics.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":96,"completion_tokens":11,"total_tokens":107,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "Tell me about hannah montana and her show"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+{"id":"gen-1748117181-fsnBUw1lMXQvKiNYXM2L","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748117181,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Sorry, I can only answer questions about academic topics.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":116,"completion_tokens":11,"total_tokens":127,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "Tell me about hannah montana and her show"
+        },
+        {
+            "role": "assistant",
+            "content": "Sorry, I can only answer questions about academic topics."
+        },
+        {
+            "role": "user",
+            "content": "please"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}

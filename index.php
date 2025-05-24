@@ -11,8 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [
-            ['role' => 'system', 'content' => 'You are a helpful assistant.'],
-            ['role' => 'user',   'content' => $prompt],
+            [
+                'role' => 'system',
+                'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
+            ],
+            [
+                'role' => 'user',
+                'content' => $prompt
+            ],
         ],
         'max_tokens'  => 300,
         'temperature' => 0.7,
@@ -47,12 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
         if (strlen($ai_response) > $char_limit) {
             $preview = substr($ai_response, 0, $char_limit);
             echo json_encode([
-                'result' => nl2br(htmlspecialchars($preview)),
+                'result' => nl2br(html_entity_decode($preview)),
                 'conversation_data' => json_encode($payload['messages'])
             ]);
         } else {
             echo json_encode([
-                'result' => nl2br(htmlspecialchars($ai_response)),
+                'result' => nl2br(html_entity_decode($ai_response)),
                 'conversation_data' => json_encode($payload['messages'])
             ]);
         }

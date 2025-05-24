@@ -13,8 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [
-            ['role' => 'system', 'content' => 'You are a helpful assistant that creates flashcards for students. Output ONLY valid JSON, and nothing else, in the following format (do not include any explanation or markdown): [{"question":"...","answer":"..."}, ...]. Surround your JSON with <json>...</json> tags.'],
-            ['role' => 'user', 'content' => "Create a set of flashcards (question/term and answer/explanation) to help me study the following topic:\n\n" . $summary]
+            [
+                'role' => 'system',
+                'content' => 'You are a helpful assistant for students. Only generate flashcards for school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If the user asks for flashcards on a non-academic topic (like TV shows, celebrities, pop culture, etc.), respond with a plain English message (not JSON) that says: "Sorry, I can only generate flashcards for academic topics." If the topic is academic, output ONLY valid JSON, and nothing else, in the following format: [{"question":"...","answer":"..."}, ...]. Surround your JSON with <json>...</json> tags.'
+            ],
+            [
+                'role' => 'user',
+                'content' => "Create a set of flashcards (question/term and answer/explanation) to help me study the following topic:\n\n" . $summary
+            ]
         ],
         'max_tokens' => 700,
         'temperature' => 0.7,
@@ -49,7 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     if (is_array($cards)) {
         echo json_encode(['cards' => $cards]);
     } else {
-        echo json_encode(['error' => 'Failed to parse flashcards. Try again.']);
+        // If not valid JSON, show the AI's message as an error
+        $refusal = trim(strip_tags($content));
+        echo json_encode(['error' => $refusal ?: 'Failed to parse flashcards. Try again.']);
     }
     exit;
 }
