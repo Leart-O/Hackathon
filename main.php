@@ -43,14 +43,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $messages = $db->query("SELECT role, content FROM messages WHERE conversation_id = $conversation_id ORDER BY created_at")
                    ->fetchAll(PDO::FETCH_ASSOC);
 
-    // Call AIMLAPI
-    $apiKey = 'd8a95fdc0d914d1d8d9c974343df5606'; // Replace with your actual aimlapi.com key
-    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
+    // Call OpenRouter
+    $apiKey = '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'; // Your OpenRouter API key
+    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
-        'model' => 'gpt-4o',
+        'model' => 'openai/gpt-4o',
         'messages' => [],
-        'max_tokens' => 2000, // or higher, if your API plan allows
+        'max_tokens' => 2000,
         'temperature' => 0.7,
     ];
 
@@ -65,7 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey
+        'Authorization: Bearer ' . $apiKey,
+        'HTTP-Referer: https://yourdomain.com',
+        'X-Title: Hackathon Chat'
     ]);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
@@ -195,6 +197,12 @@ if (isset($_POST['conversation_data'])) {
                                 </a>
                             </li>
                         <?php endforeach; ?>
+                        <li class="list-group-item">
+                            <a href="quiz.php" style="text-decoration:none;">📝 Quiz Generator</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="flashcards.php" style="text-decoration:none;">📇 Flashcards</a>
+                        </li>
                     </ul>
                     <a href="main.php" class="btn btn-primary mt-3 w-100">New Conversation</a>
                 </div>

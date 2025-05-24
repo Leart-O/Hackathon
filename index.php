@@ -1,16 +1,15 @@
 <?php
 // index.php
 
-// === 1) AJAX POST handler: call AI/ML API ===
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = 'd8a95fdc0d914d1d8d9c974343df5606'; // Replace with your actual aimlapi.com key
-    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
+    $apiKey = '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'; // Your OpenRouter API key
+    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
-        'model' => 'gpt-4o', // or the model you want to use
+        'model' => 'openai/gpt-4o',
         'messages' => [
             ['role' => 'system', 'content' => 'You are a helpful assistant.'],
             ['role' => 'user',   'content' => $prompt],
@@ -23,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey
+        'Authorization: Bearer ' . $apiKey,
+        'HTTP-Referer: https://yourdomain.com',
+        'X-Title: Hackathon Index'
     ]);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
@@ -63,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     }
     exit;
 }
-
 ?>
 
 <!doctype html>

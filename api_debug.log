@@ -234,3 +234,17 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 201
+Response: {"id":"chatcmpl-Banu2qMHO5DCXTlsXQxRekpuoC9WY","object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","logprobs":null,"message":{"role":"assistant","content":"Sure, I can help with Python. What specific information or assistance are you looking for? Whether it's about coding, libraries, frameworks, or specific problems, feel free to ask!","refusal":null,"annotations":[]}}],"created":1748111334,"model":"gpt-4o-2024-08-06","usage":{"prompt_tokens":84,"completion_tokens":1134,"total_tokens":1218,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}},"system_fingerprint":"fp_a288987b44"}
+Error: 
+Payload: {
+    "model": "gpt-4o",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Python"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
