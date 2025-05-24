@@ -198,3 +198,39 @@ Payload: {
         }
     ]
 }
+HTTP Code: 201
+Response: {"id":"chatcmpl-Bajwk3pRANl17NjOz7rZo5graQmEt","object":"chat.completion","choices":[{"index":0,"finish_reason":"length","logprobs":null,"message":{"role":"assistant","content":"Photosynthesis is a biological process used by plants, algae, and certain bacteria to convert light energy into chemical energy, which is stored in the form of glucose. This process is crucial for the survival of life on Earth as it is the primary source of organic matter for nearly all organisms, and it also produces oxygen as a byproduct, which is essential for aerobic life forms.\n\nThe process of photosynthesis can be divided into two main stages: the light-dependent reactions and the light-independent reactions (also known as the Calvin cycle).\n\n1. **Light-dependent reactions**: These occur in the thylakoid membranes of chloroplasts, where chlorophyll and other pigments absorb sunlight. The absorbed light energy is used to split water molecules (photolysis) into oxygen, protons, and electrons. Oxygen is released as a byproduct. The electrons and protons are used to convert ADP and NADP+ into the energy carriers ATP (adenosine triphosphate) and NADPH.\n\n2. **Calvin cycle (light-independent reactions)**: This stage occurs in the stroma of the chloroplasts and does not directly require light, but it uses the ATP and NADPH produced in the light-dependent reactions. During the Calvin cycle, carbon dioxide from the atmosphere is fixed into organic molecules in a series of reactions. Ultimately, this leads to the production of glucose, which can be used by the plant for energy and growth.\n\nThe overall balanced chemical equation for photosynthesis is:\n\n","refusal":null,"annotations":[]}}],"created":1748096126,"model":"gpt-4o-2024-08-06","usage":{"prompt_tokens":95,"completion_tokens":9450,"total_tokens":9545,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}},"system_fingerprint":"fp_a288987b44"}
+Error: 
+Payload: {
+    "model": "gpt-4o",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 201
+Response: {"id":"chatcmpl-BajzSfKdwGoDp7EFDPugLotjDDyD0","object":"chat.completion","choices":[{"index":0,"finish_reason":"length","logprobs":null,"message":{"role":"assistant","content":"\"The Matrix\" is a science fiction film released in 1999, written and directed by the Wachowskis (Lana and Lilly Wachowski). It is the first installment in \"The Matrix\" film series and has become a cultural milestone due to its innovative use of visual effects and philosophical themes.\n\n### Plot Summary:\nThe story is set in a dystopian future where humanity is unknowingly trapped inside a simulated reality known as the Matrix, which intelligent machines have created to subdue the human population. The machines use humans as an energy source after a prolonged conflict led to the Earth's surface becoming uninhabitable.\n\nThe protagonist, Thomas Anderson, known by his hacker alias \"Neo,\" is a computer programmer who discovers the truth about the Matrix. He is contacted by a group of rebels led by Morpheus, who believes Neo is \"the One\" — a prophesied figure destined to end the war between humans and machines. With the help of Trinity and others, Neo is trained to harness his abilities within the Matrix, ultimately confronting the sentient programs known as Agents, led by the formidable Agent Smith.\n\n### Key Themes and Concepts:\n- **Reality vs. Illusion**: The Matrix explores the nature of reality and questions what is real versus what is perceived as real.\n- **Control and Freedom**: The film examines the concept of control (by the machines) and the desire for freedom (by the humans).\n- **Choice and Destiny**: Neo's journey is about making choices","refusal":null,"annotations":[]}}],"created":1748096294,"model":"gpt-4o-2024-08-06","usage":{"prompt_tokens":3350,"completion_tokens":9450,"total_tokens":12800,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}},"system_fingerprint":"fp_07871e2ad8"}
+Error: 
+Payload: {
+    "model": "gpt-4o",
+    "messages": [
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Photosynthesis is a biological process used by plants, algae, and certain bacteria to convert light energy into chemical energy, which is stored in the form of glucose. This process is crucial for the survival of life on Earth as it is the primary source of organic matter for nearly all organisms, and it also produces oxygen as a byproduct, which is essential for aerobic life forms.\n\nThe process of photosynthesis can be divided into two main stages: the light-dependent reactions and the light-independent reactions (also known as the Calvin cycle).\n\n1. **Light-dependent reactions**: These occur in the thylakoid membranes of chloroplasts, where chlorophyll and other pigments absorb sunlight. The absorbed light energy is used to split water molecules (photolysis) into oxygen, protons, and electrons. Oxygen is released as a byproduct. The electrons and protons are used to convert ADP and NADP+ into the energy carriers ATP (adenosine triphosphate) and NADPH.\n\n2. **Calvin cycle (light-independent reactions)**: This stage occurs in the stroma of the chloroplasts and does not directly require light, but it uses the ATP and NADPH produced in the light-dependent reactions. During the Calvin cycle, carbon dioxide from the atmosphere is fixed into organic molecules in a series of reactions. Ultimately, this leads to the production of glucose, which can be used by the plant for energy and growth.\n\nThe overall balanced chemical equation for photosynthesis is:\n\n"
+        },
+        {
+            "role": "user",
+            "content": "the matrix"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}

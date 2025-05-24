@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php'; // Include database connection
+require 'db.php';
 
 // Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -39,19 +39,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $stmt = $db->prepare("INSERT INTO messages (conversation_id, role, content) VALUES (?, 'user', ?)");
     $stmt->execute([$conversation_id, $question]);
 
-    // Call AI API
+    // Fetch all messages for this conversation
     $messages = $db->query("SELECT role, content FROM messages WHERE conversation_id = $conversation_id ORDER BY created_at")
                    ->fetchAll(PDO::FETCH_ASSOC);
+
+    // Call AIMLAPI
+    $apiKey = 'd8a95fdc0d914d1d8d9c974343df5606'; // Replace with your actual aimlapi.com key
+    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
+
     $payload = [
-        'model' => 'gpt-4', // Replace with the correct model ID if needed
-        'messages' => $messages
+        'model' => 'gpt-4o',
+        'messages' => [],
+        'max_tokens' => 2000, // or higher, if your API plan allows
+        'temperature' => 0.7,
     ];
-    $ch = curl_init('https://api.aimlapi.com/v1/chat/completions'); // Updated endpoint
+
+    foreach ($messages as $msg) {
+        $payload['messages'][] = [
+            'role' => $msg['role'],
+            'content' => $msg['content']
+        ];
+    }
+
+    $ch = curl_init($endpoint);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
         'Content-Type: application/json',
-        'Authorization: Bearer fd6b7518f2af43288541cd7ecec46e6f' // Replace with your actual API key
+        'Authorization: Bearer ' . $apiKey
     ]);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
     $response = curl_exec($ch);
@@ -59,17 +74,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $curlError = curl_error($ch);
     curl_close($ch);
 
-    // Log the response and errors
+    // Log the response and errors (optional)
     file_put_contents('api_debug.log', "HTTP Code: $httpCode\nResponse: $response\nError: $curlError\n", FILE_APPEND);
     file_put_contents('api_debug.log', "Payload: " . json_encode($payload, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
     $data = json_decode($response, true);
-    if (isset($data['error']['message'])) {
-        $error_message = $data['error']['message'];
-        file_put_contents('api_debug.log', "API Error: $error_message\n", FILE_APPEND);
-        die("API Error: $error_message");
+    if (isset($data['choices'][0]['message']['content'])) {
+        $ai_text = $data['choices'][0]['message']['content'];
+    } else {
+        $ai_text = 'Error: no response';
     }
-    $ai_text = $data['choices'][0]['message']['content'] ?? 'Error: no response';
 
     // Save AI response
     $stmt = $db->prepare("INSERT INTO messages (conversation_id, role, content) VALUES (?, 'assistant', ?)");
@@ -89,46 +103,107 @@ if (isset($_POST['conversation_data'])) {
     }
 }
 ?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI Chat Main</title>
+    <title>AI Chat - Topic Listing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .chat-message {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .chat-message.user {
+            background: #e3f2fd;
+            text-align: right;
+        }
+        .chat-message.assistant {
+            background: #f8f9fa;
+            text-align: left;
+        }
+        .sidebar {
+            background: var(--section-bg-color);
+            border-radius: var(--border-radius-medium);
+            padding: 20px;
+            min-height: 400px;
+        }
+        .sidebar .list-group-item.active {
+            background: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+    </style>
 </head>
-<body>
-    <main>
-        <section class="hero-section d-flex justify-content-center align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h1 class="text-white">AI Chat</h1>
-                    </div>
+<body id="top">
+<main>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <i class="bi-back"></i>
+                <span>Topic</span>
+            </a>
+            <div class="d-lg-none ms-auto me-4">
+                <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php#section_1">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php#section_2">Browse Topics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php#section_3">How it works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php#section_4">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php#section_5">Contact</a></li>
+                </ul>
+                <div class="d-none d-lg-block">
+                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
                 </div>
             </div>
-        </section>
-        <section class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <h3>Conversations</h3>
-                        <ul class="list-group">
-                            <?php foreach ($conversations as $conv): ?>
-                                <li class="list-group-item">
-                                    <a href="main.php?conversation_id=<?= $conv['id'] ?>"><?= htmlspecialchars($conv['title']) ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <a href="main.php" class="btn btn-primary mt-3">New Conversation</a>
-                    </div>
-                    <div class="col-lg-9">
-                        <h2>Conversation</h2>
+        </div>
+    </nav>
+
+    <section class="hero-section d-flex justify-content-center align-items-center" style="padding-bottom:40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="text-white">AI Chat</h1>
+                    <h6 class="text-white">Continue your conversation or start a new one</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 sidebar">
+                    <h3>Conversations</h3>
+                    <ul class="list-group">
+                        <?php foreach ($conversations as $conv): ?>
+                            <li class="list-group-item<?= ($conv['id'] == $conversation_id) ? ' active' : '' ?>">
+                                <a href="main.php?conversation_id=<?= $conv['id'] ?>" style="text-decoration:none;<?= ($conv['id'] == $conversation_id) ? 'color:#fff;' : '' ?>">
+                                    <?= htmlspecialchars($conv['title']) ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <a href="main.php" class="btn btn-primary mt-3 w-100">New Conversation</a>
+                </div>
+                <div class="col-lg-9">
+                    <h2>Conversation</h2>
+                    <div style="min-height:300px;">
                         <?php if ($conversation_id): ?>
                             <?php foreach ($messages as $msg): ?>
-                                <div class="alert alert-<?= $msg['role'] === 'user' ? 'primary' : 'secondary' ?>">
+                                <div class="chat-message <?= $msg['role'] ?>">
                                     <strong><?= ucfirst($msg['role']) ?>:</strong>
                                     <?= nl2br(htmlspecialchars($msg['content'])) ?>
                                 </div>
@@ -136,18 +211,37 @@ if (isset($_POST['conversation_data'])) {
                         <?php else: ?>
                             <p>Select a conversation or start a new one.</p>
                         <?php endif; ?>
-                        <form method="POST">
-                            <input type="hidden" name="conversation_id" value="<?= $conversation_id ?>">
-                            <div class="form-group">
-                                <label for="question">Ask AI:</label>
-                                <textarea id="question" name="question" class="form-control" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-3">Send</button>
-                        </form>
                     </div>
+                    <form method="POST" class="custom-form mt-4">
+                        <input type="hidden" name="conversation_id" value="<?= $conversation_id ?>">
+                        <div class="form-group mb-3">
+                            <label for="question">Ask AI:</label>
+                            <textarea id="question" name="question" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn custom-btn">Send</button>
+                    </form>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
+<footer class="site-footer section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12 mb-4 pb-2">
+                <a class="navbar-brand mb-2" href="index.php">
+                    <i class="bi-back"></i>
+                    <span>Topic</span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-6"></div>
+            <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0"></div>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

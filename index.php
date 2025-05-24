@@ -6,25 +6,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = 'fd6b7518f2af43288541cd7ecec46e6f'; // Replace with your actual API key
-    $endpoint = 'https://api.aimlapi.com/v1/chat/completions'; // Updated endpoint
+    $apiKey = 'd8a95fdc0d914d1d8d9c974343df5606'; // Replace with your actual aimlapi.com key
+    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
 
     $payload = [
-        'model'       => 'gpt-4o', // Replace with the correct model ID if needed
-        'messages'    => [
+        'model' => 'gpt-4o', // or the model you want to use
+        'messages' => [
             ['role' => 'system', 'content' => 'You are a helpful assistant.'],
             ['role' => 'user',   'content' => $prompt],
         ],
-        'max_tokens'  => 150,
+        'max_tokens'  => 300,
         'temperature' => 0.7,
     ];
 
-    // Initialize cURL
     $ch = curl_init($endpoint);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Authorization: Bearer ' . $apiKey,
         'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey
     ]);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
@@ -34,24 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     $curlError = curl_error($ch);
     curl_close($ch);
 
-    // Handle response
     if ($curlError) {
         echo json_encode(['error' => "cURL error: $curlError"]);
         exit;
     }
 
     $data = json_decode($response, true);
-    if (isset($data['error']['message'])) {
-        echo json_encode([
-            'error'        => 'API error: ' . $data['error']['message'],
-            'raw_response' => $response
-        ]);
-        exit;
-    }
 
     if (isset($data['choices'][0]['message']['content'])) {
         $ai_response = $data['choices'][0]['message']['content'];
-        $char_limit = 300; // Character limit for preview
+        $char_limit = 300;
         if (strlen($ai_response) > $char_limit) {
             $preview = substr($ai_response, 0, $char_limit);
             echo json_encode([
