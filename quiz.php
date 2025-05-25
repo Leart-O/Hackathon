@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi-back"></i>
-                <span>Topic</span>
+                <span>Apollo AI</span>
             </a>
         </div>
     </nav>

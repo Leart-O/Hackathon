@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Detail Page</title>
+        <title>Apollo AI Detail Page</title>
 
                 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>Apollo AI</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -182,7 +182,7 @@
                     <div class="col-lg-3 col-12 mb-4 pb-2">
                         <a class="navbar-brand mb-2" href="index.php">
                             <i class="bi-back"></i>
-                            <span>Topic</span>
+                            <span>Apollo AI</span>
                         </a>
                     </div>
 
@@ -238,7 +238,7 @@
                             </ul>
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.</p>
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Apollo AI Listing Center. All rights reserved.</p>
                         
                     </div>
 

@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Listing Contact Page</title>
+        <title>Apollo AI Listing Contact Page</title>
 
                 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>Apollo AI</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
@@ -230,7 +230,7 @@
                             </ul>
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Apollo AI Listing Center. All rights reserved.
                         
                         
                     </div>

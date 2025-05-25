@@ -1,5 +1,4 @@
 <?php
-// index.php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
@@ -81,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Listing Bootstrap 5 Template</title>
+        <title>Apollo AI</title>
 
               
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -133,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>Apollo AI</span>
                     </a>
                     
                     <div class="d-lg-none ms-auto me-4">
@@ -637,9 +636,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     </div>
 
                                     <li>
-                                        <h4 class="text-white mb-3">Search your favourite topic</h4>
+                                        <h4 class="text-white mb-3">Tell the AI What You Want to Learn</h4>
 
-                                        <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, cumque magnam? Sequi, cupiditate quibusdam alias illum sed esse ad dignissimos libero sunt, quisquam numquam aliquam? Voluptas, accusamus omnis?</p>
+                                        <p class="text-white">Just type in a topic, theme, or even a short description of what you need to study. Whether it’s “Photosynthesis,” “World War II causes,” or “Intro to Calculus,” the AI understands your intent and instantly gets to work. No need to dig through textbooks or Google for hours—just ask.</p>
 
                                         <div class="icon-holder">
                                           <i class="bi-search"></i>
@@ -647,9 +646,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     </li>
                                     
                                     <li>
-                                        <h4 class="text-white mb-3">Bookmark &amp; Keep it for yourself</h4>
+                                        <h4 class="text-white mb-3">Get Instant Study Materials</h4>
 
-                                        <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis est vel quo, nihil repellat quia velit error modi earum similique odit labore. Doloremque, repudiandae?</p>
+                                        <p class="text-white">Based on your input, the AI generates easy-to-understand explanations, key points, and summaries tailored to your learning level. You’ll receive focused content that actually helps you learn—no fluff, no filler. It’s like having a personal tutor that adapts to what you need.</p>
 
                                         <div class="icon-holder">
                                           <i class="bi-bookmark"></i>
@@ -657,9 +656,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     </li>
 
                                     <li>
-                                        <h4 class="text-white mb-3">Read &amp; Enjoy</h4>
+                                        <h4 class="text-white mb-3">Practice with Quizzes &amp; Flashcards</h4>
 
-                                        <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vero quisquam, rem assumenda similique voluptas distinctio, iste est hic eveniet debitis ut ducimus beatae id? Quam culpa deleniti officiis autem?</p>
+                                        <p class="text-white">Learning doesn’t stop with reading. Test yourself using AI-generated quizzes and smart flashcards that reinforce what you just learned. The more you study, the better the AI gets at personalizing your materials—helping you remember more, faster.</p>
 
                                         <div class="icon-holder">
                                           <i class="bi-book"></i>
@@ -669,12 +668,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                             </div>
                         </div>
 
-                        <div class="col-12 text-center mt-5">
-                            <p class="text-white">
-                                Want to learn more?
-                                <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
-                            </p>
-                        </div>
+                        
                     </div>
                 </div>
             </section>
@@ -698,20 +692,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        What is Topic Listing?
-                                        </button>
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Does it need to paid?
+                                    </button>
                                     </h2>
+
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        How to find a topic?
+                                        Does it need to paid?
                                     </button>
                                     </h2>
 
-                                    
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="accordion-item">

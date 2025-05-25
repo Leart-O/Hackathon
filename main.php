@@ -116,7 +116,7 @@ if (isset($_POST['conversation_data'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AI Chat - Topic Listing</title>
+    <title>Apollo AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
@@ -156,7 +156,7 @@ if (isset($_POST['conversation_data'])) {
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi-back"></i>
-                <span>Topic</span>
+                <span>Apollo AI</span>
             </a>
             <div class="d-lg-none ms-auto me-4">
                 <a href="#top" class="navbar-icon bi-person smoothscroll"></a>

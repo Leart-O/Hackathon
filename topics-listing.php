@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Topic Listing Page</title>
+        <title>Apollo AI Listing Page</title>
 
                
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="index.php">
                         <i class="bi-back"></i>
-                        <span>Topic</span>
+                        <span>Apollo AI</span>
                     </a>
 
                     <div class="d-lg-none ms-auto me-4">
