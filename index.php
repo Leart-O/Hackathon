@@ -1,5 +1,5 @@
 <?php
-session_start(); // Add this at the very top
+session_start(); 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
@@ -910,7 +910,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                 $('#output').html(marked.parse(json.result));
 if (window.MathJax) MathJax.typesetPromise([document.getElementById('output')]);
 
-                // Place the Pixabay fetch code here
+                
                 const topic = document.getElementById('prompt-input').value.trim();
 
 fetch(`https://pixabay.com/api/?key=50494584-87d85c2a13020ebc5144f3a07&q=${encodeURIComponent(topic)}&image_type=photo&per_page=3&safesearch=true`)
@@ -927,7 +927,7 @@ fetch(`https://pixabay.com/api/?key=50494584-87d85c2a13020ebc5144f3a07&q=${encod
     document.getElementById('topic-image').style.display = 'none';
   });
 
-                // Pass conversation data to main.php
+                
                 const readMoreBtn = document.querySelector('.btn.custom-btn');
                 readMoreBtn.addEventListener('click', () => {
                     const form = document.createElement('form');

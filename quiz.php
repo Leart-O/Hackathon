@@ -42,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
         echo json_encode(['error' => "cURL error: $curlError"]);
         exit;
     }
-    // Try to extract JSON from the AI response
+  
     $data = json_decode($response, true);
     $content = $data['choices'][0]['message']['content'] ?? '';
 
-    // Extract JSON between <json>...</json>
+    
     if (preg_match('/<json>(.*?)<\/json>/is', $content, $m)) {
         $json_str = trim($m[1]);
     } else {
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     if (is_array($quiz)) {
         echo json_encode(['quiz' => $quiz]);
     } else {
-        // If not valid JSON, show the AI's message as an error
+       
         $refusal = trim(strip_tags($content));
         echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again or change api key (emergency api key in comment on the code next to the current one)']);
     }
@@ -211,7 +211,7 @@ function renderQuiz(quiz) {
     <div id="quiz-result" class="mt-4"></div>`;
     quizArea.innerHTML = html;
 
-    // Option selection
+   
     document.querySelectorAll('.quiz-option').forEach(opt => {
         opt.addEventListener('click', function() {
             const q = this.getAttribute('data-q');
@@ -236,7 +236,7 @@ function renderQuiz(quiz) {
                     selected.classList.add('correct');
                 } else {
                     selected.classList.add('incorrect');
-                    // highlight correct
+                    
                     document.querySelectorAll(`.quiz-option[data-q="${idx}"]`).forEach(o => {
                         if (parseInt(o.getAttribute('data-idx')) === correctIdx) {
                             o.classList.add('correct');

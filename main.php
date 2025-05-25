@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $curlError = curl_error($ch);
     curl_close($ch);
 
-    // Log the response and errors (optional)
+    
     file_put_contents('api_debug.log', "HTTP Code: $httpCode\nResponse: $response\nError: $curlError\n", FILE_APPEND);
     file_put_contents('api_debug.log', "Payload: " . json_encode($payload, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
 
@@ -93,16 +93,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
         $ai_text = 'Error: no response';
     }
 
-    // Save AI response
+    
     $stmt = $db->prepare("INSERT INTO messages (conversation_id, role, content) VALUES (?, 'assistant', ?)");
     $stmt->execute([$conversation_id, $ai_text]);
 
-    // Redirect with conversation data
+    
     header("Location: main.php?conversation_id=$conversation_id");
     exit;
 }
 
-// Fetch conversation from index.php if passed
+
 if (isset($_POST['conversation_data'])) {
     $conversation_data = json_decode($_POST['conversation_data'], true);
     foreach ($conversation_data as $message) {
@@ -111,7 +111,7 @@ if (isset($_POST['conversation_data'])) {
     }
 }
 
-// Handle rename
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rename_conversation_id'], $_POST['new_title'])) {
     $cid = (int)$_POST['rename_conversation_id'];
     $new_title = trim($_POST['new_title']);
@@ -123,7 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rename_conversation_i
     exit;
 }
 
-// Handle delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_conversation_id'])) {
     $cid = (int)$_POST['delete_conversation_id'];
     $stmt = $db->prepare("DELETE FROM conversations WHERE id = ? AND user_id = ?");
@@ -230,16 +229,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_conversation_i
                                         <?= htmlspecialchars($conv['title']) ?>
                                     </a>
                                     <div>
-                                        <!-- Rename button (shows inline form) -->
+                                        
                                         <button class="btn btn-sm btn-outline-primary py-0 px-2 ms-1" onclick="showRenameForm(<?= $conv['id'] ?>, '<?= htmlspecialchars(addslashes($conv['title'])) ?>')">✏️</button>
-                                        <!-- Delete form -->
+                                       
                                         <form method="POST" action="main.php" style="display:inline;" onsubmit="return confirm('Delete this conversation?');">
                                             <input type="hidden" name="delete_conversation_id" value="<?= $conv['id'] ?>">
                                             <button type="submit" class="btn btn-sm btn-outline-danger py-0 px-2 ms-1">🗑️</button>
                                         </form>
                                     </div>
                                 </div>
-                                <!-- Inline rename form (hidden by default) -->
+                                
                                 <form method="POST" action="main.php" id="rename-form-<?= $conv['id'] ?>" style="display:none; margin-top:5px;">
                                     <input type="hidden" name="rename_conversation_id" value="<?= $conv['id'] ?>">
                                     <input type="text" name="new_title" class="form-control form-control-sm" style="width:70%; display:inline;" required>
