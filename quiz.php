@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';
+    $apiKey = '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';// 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     } else {
         // If not valid JSON, show the AI's message as an error
         $refusal = trim(strip_tags($content));
-        echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again.']);
+        echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again or change api key (emergency api key in comment on the code next to the current one)']);
     }
     exit;
 }

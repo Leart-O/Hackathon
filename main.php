@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
                    ->fetchAll(PDO::FETCH_ASSOC);
 
     // Call OpenRouter
-    $apiKey = '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'; // Your OpenRouter API key
+    $apiKey = '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'; // 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
@@ -290,7 +290,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_conversation_i
             <div class="col-lg-3 col-12 mb-4 pb-2">
                 <a class="navbar-brand mb-2" href="index.php">
                     <i class="bi-back"></i>
-                    <span>Topic</span>
+                    <span>Apollo AI</span>
                 </a>
             </div>
             <div class="col-lg-3 col-md-4 col-6"></div>

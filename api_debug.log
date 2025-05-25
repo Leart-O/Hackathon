@@ -684,3 +684,39 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1748204306-ivLoWX7tXfE2q8RNHXzh","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748204306,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"A verb is a part of speech that describes an action, occurrence, or state of being. Verbs are essential components of sentences, as they express what the subject does or is. There are several types of verbs, including:\n\n1. **Action verbs**: These verbs express physical or mental actions. For example, \"run,\" \"think,\" and \"write.\"\n\n2. **Linking verbs**: These verbs connect the subject to additional information about the subject. They include forms of \"to be\" (such as \"am,\" \"is,\" \"are,\" \"was,\" \"were\") and other verbs like \"seem,\" \"become,\" and \"appear.\"\n\n3. **Helping verbs (auxiliary verbs)**: These verbs are used with a main verb to form a verb phrase. Examples include \"have,\" \"do,\" and \"will.\" For example, in the sentence \"She is running,\" \"is\" is a helping verb.\n\nVerbs can also change form to indicate tense, mood, and voice. For example, the verb \"run\" can become \"ran\" (past tense) or \"running\" (present participle).","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_76544d79cb","usage":{"prompt_tokens":87,"completion_tokens":233,"total_tokens":320,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "verb"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
