@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';
+    $apiKey = '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';
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -123,7 +123,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
 
         .flashcard-back { transform: rotateY(180deg); }
 
-        .flashcard-controls button { margin: 0 10px; }
+        .flashcard-controls button {
+            margin: 0 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px !important;
+            min-width: 90px;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+
+        #prev-btn, #next-btn {
+            background: #13547a !important;
+            color: #fff !important;
+            border: 2px solid #13547a !important;
+        }
+
+        #prev-btn:disabled, #next-btn:disabled {
+            background: #b3d8ef !important;
+            color: #fff !important;
+            border: 2px solid #b3d8ef !important;
+            opacity: 0.7;
+        }
+
+        #flip-btn {
+            background: #F9A826 !important;
+            color: #fff !important;
+            border: 2px solid #F9A826 !important;
+        }
+
+        .flashcard-controls button:hover:not(:disabled) {
+            filter: brightness(1.1);
+            box-shadow: 0 2px 8px rgba(19,84,122,0.15);
+        }
+
+        .flashcard-controls + .mt-2 {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #13547a;
+            background: #e3f2fd;
+            border-radius: 20px;
+            padding: 6px 18px;
+            display: inline-block;
+            margin-top: 10px;
+        }
 
         @media (max-width: 600px) {
             .flashcard { max-width: 98vw; }

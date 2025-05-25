@@ -44,13 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
                    ->fetchAll(PDO::FETCH_ASSOC);
 
     // Call OpenRouter
-    $apiKey = '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'; // Your OpenRouter API key
+    $apiKey = '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'; // Your OpenRouter API key
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [],
-        'max_tokens' => 2000,
+        'max_tokens' => 300,
         'temperature' => 0.7,
     ];
 

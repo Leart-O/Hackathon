@@ -458,3 +458,229 @@ Payload: {
     "max_tokens": 2000,
     "temperature": 0.7
 }
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 2000 tokens, but can only afford 346. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "Why did the first world war start"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 2000 tokens, but can only afford 346. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "Why did the first world war start"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 2000 tokens, but can only afford 282. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is the formula for photosynthesis"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 300 tokens, but can only afford 282. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is the formula for photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 300 tokens, but can only afford 282. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is the formula for photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 402
+Response: {"error":{"message":"This request requires more credits, or fewer max_tokens. You requested up to 300 tokens, but can only afford 282. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account","code":402,"metadata":{"provider_name":null}},"user_id":"user_2xa9xTzOjlMoaBicPJvVmraCtt5"}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis formula"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+{"id":"gen-1748201494-0sij1HjR8QD3Dl7ymrWS","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748201494,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"The chemical formula for photosynthesis can be represented as:\n\n\\[ 6 \\text{CO}_2 + 6 \\text{H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6 \\text{O}_2 \\]\n\nThis equation summarizes the process by which plants, algae, and some bacteria convert carbon dioxide and water into glucose and oxygen, using energy from sunlight.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":89,"completion_tokens":101,"total_tokens":190,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "photosynthesis formula"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1748202057-wIoKUVFPYfYhEHFVdoTN","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748202057,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"The laws of motion refer to three fundamental principles formulated by Sir Isaac Newton, which describe the relationship between the motion of an object and the forces acting on it. These laws are foundational to classical mechanics and are stated as follows:\n\n1. **Newton's First Law (Law of Inertia):** An object at rest will remain at rest, and an object in motion will continue in motion with a constant velocity (straight line) unless acted upon by a net external force. This law highlights the concept of inertia, which is the tendency of objects to resist changes in their state of motion.\n\n2. **Newton's Second Law (Law of Acceleration):** The acceleration of an object is directly proportional to the net force acting upon it and inversely proportional to its mass. This is often expressed with the formula \\( F = ma \\), where \\( F \\) is the net force applied to the object, \\( m \\) is the mass of the object, and \\( a \\) is the acceleration produced.\n\n3. **Newton's Third Law (Action and Reaction):** For every action, there is an equal and opposite reaction. This means that forces always occur in pairs: if object A exerts a force on object B, then object B exerts an equal and opposite force on object A.\n\nThese laws provide the framework for understanding the motion of objects and are applicable in a wide range of physical situations.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":91,"completion_tokens":283,"total_tokens":374,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "physic law of motion"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+{"id":"gen-1748202081-AVT0n4Y3DPsr0JSX1g4W","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748202081,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"You're welcome! If you have any more questions about physics or any other academic topic, feel free to ask.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_76544d79cb","usage":{"prompt_tokens":383,"completion_tokens":22,"total_tokens":405,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "physic law of motion"
+        },
+        {
+            "role": "assistant",
+            "content": "The laws of motion refer to three fundamental principles formulated by Sir Isaac Newton, which describe the relationship between the motion of an object and the forces acting on it. These laws are foundational to classical mechanics and are stated as follows:\n\n1. **Newton's First Law (Law of Inertia):** An object at rest will remain at rest, and an object in motion will continue in motion with a constant velocity (straight line) unless acted upon by a net external force. This law highlights the concept of inertia, which is the tendency of objects to resist changes in their state of motion.\n\n2. **Newton's Second Law (Law of Acceleration):** The acceleration of an object is directly proportional to the net force acting upon it and inversely proportional to its mass. This is often expressed with the formula \\( F = ma \\), where \\( F \\) is the net force applied to the object, \\( m \\) is the mass of the object, and \\( a \\) is the acceleration produced.\n\n3. **Newton's Third Law (Action and Reaction):** For every action, there is an equal and opposite reaction. This means that forces always occur in pairs: if object A exerts a force on object B, then object B exerts an equal and opposite force on object A.\n\nThese laws provide the framework for understanding the motion of objects and are applicable in a wide range of physical situations."
+        },
+        {
+            "role": "user",
+            "content": "thanks"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}

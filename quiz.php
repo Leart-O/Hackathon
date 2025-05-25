@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';
+    $apiKey = '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';
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -229,15 +229,16 @@ function renderQuiz(quiz) {
                 o.classList.remove('correct', 'incorrect');
             });
             if (selected) {
-                const answer = selected.querySelector('label').textContent.trim();
-                if (answer === q.answer) {
+                const selectedIdx = parseInt(selected.getAttribute('data-idx'));
+                const correctIdx = "ABCD".indexOf(q.answer.trim().toUpperCase());
+                if (selectedIdx === correctIdx) {
                     correct++;
                     selected.classList.add('correct');
                 } else {
                     selected.classList.add('incorrect');
                     // highlight correct
                     document.querySelectorAll(`.quiz-option[data-q="${idx}"]`).forEach(o => {
-                        if (o.querySelector('label').textContent.trim() === q.answer) {
+                        if (parseInt(o.getAttribute('data-idx')) === correctIdx) {
                             o.classList.add('correct');
                         }
                     });
