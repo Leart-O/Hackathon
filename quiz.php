@@ -150,11 +150,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
                     <h1 class="text-white text-center">AI Quiz Generator</h1>
                     <h6 class="text-center">Enter a summary of what you want to study and get a quiz instantly!</h6>
                     <form id="quiz-form" class="custom-form mt-4">
-                        <textarea name="summary" id="summary" class="form-control mb-3" rows="4" placeholder="Write a short summary of what you need to study..." required></textarea>
-                        <button type="submit" class="btn custom-btn w-100">Generate Quiz</button>
+                        <textarea style="ma" name="summary" id="summary" class="form-control mb-3" rows="4" placeholder="Write a short summary of what you need to study..." required></textarea>
+                        <button type="submit" class="btn custom-btn w-100 mb-3">Generate Quiz</button>
+                        <br>
                     </form>
                     <div id="quiz-area"></div>
                     <div class="custom-error" id="error" style="display:none;"></div>
+                    <div class="custom-output" id="output" style="display:none;"></div>
                 </div>
             </div>
         </div>
@@ -246,7 +248,16 @@ function renderQuiz(quiz) {
     };
 }
 </script>
+<script src="js/main.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+$('#output').html(marked.parse(json.result));
+if (window.MathJax) MathJax.typesetPromise([document.getElementById('output')]);
+</script>
 </body>
 </html>

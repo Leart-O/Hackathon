@@ -358,3 +358,103 @@ Payload: {
     "max_tokens": 2000,
     "temperature": 0.7
 }
+HTTP Code: 401
+Response: {"error":{"message":"No auth credentials found","code":401}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "youtube"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 401
+Response: {"error":{"message":"No auth credentials found","code":401}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "youtube"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "what are verbs"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 401
+Response: {"error":{"message":"No auth credentials found","code":401}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is photsynthesis"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1748172545-oJZp7Gyezd7GkjooYmvb","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1748172545,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy stored in glucose. During photosynthesis, these organisms take in carbon dioxide (CO₂) from the air and water (H₂O) from the soil, and using the energy from sunlight, they produce glucose (C₆H₁₂O₆) and oxygen (O₂) as a byproduct. The overall chemical equation for photosynthesis can be simplified as:\n\n\\[ \\text{6 CO}_2 + \\text{6 H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + \\text{6 O}_2 \\]\n\nPhotosynthesis primarily occurs in the chloroplasts of plant cells, where chlorophyll (the green pigment) captures the light energy needed to drive the reaction. This process is crucial for life on Earth as it provides the oxygen we breathe and is the foundation of the food chain.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":107,"completion_tokens":217,"total_tokens":324,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is photsynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        }
+    ],
+    "max_tokens": 2000,
+    "temperature": 0.7
+}

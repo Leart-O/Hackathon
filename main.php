@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
                    ->fetchAll(PDO::FETCH_ASSOC);
 
     // Call OpenRouter
-    $apiKey = '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'; // Your OpenRouter API key
+    $apiKey = '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'; // Your OpenRouter API key
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
@@ -110,6 +110,27 @@ if (isset($_POST['conversation_data'])) {
         $stmt->execute([$conversation_id, $message['role'], $message['content']]);
     }
 }
+
+// Handle rename
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rename_conversation_id'], $_POST['new_title'])) {
+    $cid = (int)$_POST['rename_conversation_id'];
+    $new_title = trim($_POST['new_title']);
+    if ($new_title !== '') {
+        $stmt = $db->prepare("UPDATE conversations SET title = ? WHERE id = ? AND user_id = ?");
+        $stmt->execute([$new_title, $cid, $_SESSION['user_id']]);
+    }
+    header("Location: main.php?conversation_id=$cid");
+    exit;
+}
+
+// Handle delete
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_conversation_id'])) {
+    $cid = (int)$_POST['delete_conversation_id'];
+    $stmt = $db->prepare("DELETE FROM conversations WHERE id = ? AND user_id = ?");
+    $stmt->execute([$cid, $_SESSION['user_id']]);
+    header("Location: main.php");
+    exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -149,6 +170,9 @@ if (isset($_POST['conversation_data'])) {
             border-color: var(--primary-color);
         }
     </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body id="top">
 <main>
@@ -201,9 +225,27 @@ if (isset($_POST['conversation_data'])) {
                     <ul class="list-group">
                         <?php foreach ($conversations as $conv): ?>
                             <li class="list-group-item<?= ($conv['id'] == $conversation_id) ? ' active' : '' ?>">
-                                <a href="main.php?conversation_id=<?= $conv['id'] ?>" style="text-decoration:none;<?= ($conv['id'] == $conversation_id) ? 'color:#fff;' : '' ?>">
-                                    <?= htmlspecialchars($conv['title']) ?>
-                                </a>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a href="main.php?conversation_id=<?= $conv['id'] ?>" style="text-decoration:none;<?= ($conv['id'] == $conversation_id) ? 'color:#fff;' : '' ?>">
+                                        <?= htmlspecialchars($conv['title']) ?>
+                                    </a>
+                                    <div>
+                                        <!-- Rename button (shows inline form) -->
+                                        <button class="btn btn-sm btn-outline-primary py-0 px-2 ms-1" onclick="showRenameForm(<?= $conv['id'] ?>, '<?= htmlspecialchars(addslashes($conv['title'])) ?>')">✏️</button>
+                                        <!-- Delete form -->
+                                        <form method="POST" action="main.php" style="display:inline;" onsubmit="return confirm('Delete this conversation?');">
+                                            <input type="hidden" name="delete_conversation_id" value="<?= $conv['id'] ?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger py-0 px-2 ms-1">🗑️</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Inline rename form (hidden by default) -->
+                                <form method="POST" action="main.php" id="rename-form-<?= $conv['id'] ?>" style="display:none; margin-top:5px;">
+                                    <input type="hidden" name="rename_conversation_id" value="<?= $conv['id'] ?>">
+                                    <input type="text" name="new_title" class="form-control form-control-sm" style="width:70%; display:inline;" required>
+                                    <button type="submit" class="btn btn-sm btn-success py-0 px-2 ms-1">Save</button>
+                                    <button type="button" class="btn btn-sm btn-secondary py-0 px-2 ms-1" onclick="hideRenameForm(<?= $conv['id'] ?>)">Cancel</button>
+                                </form>
                             </li>
                         <?php endforeach; ?>
                         <li class="list-group-item">
@@ -260,5 +302,14 @@ if (isset($_POST['conversation_data'])) {
 <script src="js/bootstrap.bundle.min.js"></script>
 <script src="js/jquery.sticky.js"></script>
 <script src="js/custom.js"></script>
+<script>
+function showRenameForm(id, title) {
+    document.getElementById('rename-form-' + id).style.display = 'block';
+    document.getElementById('rename-form-' + id).querySelector('input[name="new_title"]').value = title;
+}
+function hideRenameForm(id) {
+    document.getElementById('rename-form-' + id).style.display = 'none';
+}
+</script>
 </body>
 </html>

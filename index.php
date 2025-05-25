@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
         'messages' => [
             [
                 'role' => 'system',
-                'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
+                'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as Ai(artificial intelligence), math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
             ],
             [
                 'role' => 'user',
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
             ]);
         } else {
             echo json_encode([
-                'result' => nl2br(html_entity_decode($ai_response)),
+                'result' => html_entity_decode($ai_response),
                 'conversation_data' => json_encode($payload['messages'])
             ]);
         }
@@ -189,43 +189,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
             
 
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="text-white text-center">Discover. Learn. Enjoy</h1>
-
-                            <h6 class="text-center">platform for creatives around the world</h6>
-
-                            <section class="section-padding">
-    <div class="container">
-      <h2>Ask the AI/ML API</h2>
-      <form id="prompt-form">
-        <div class="custom-form">
-          <input
-            type="text"
-            name="prompt"
-            id="prompt-input"
-            class="form-control"
-            placeholder="Enter your question..."
-            required>
-          <button type="submit" class="custom-btn">Send</button>
+  <div class="container">
+    <form id="prompt-form">
+      <div class="custom-form d-flex">
+        <input
+          type="text"
+          name="prompt"
+          id="prompt-input"
+          class="form-control"
+          placeholder="Enter your question..."
+          required>
+        <button type="submit" class="custom-btn ms-2">Send</button>
+      </div>
+    </form>
+    <div class="row align-items-start mt-4">
+      <!-- Left: AI output -->
+      <div class="col-lg-8 col-12">
+        <div class="custom-output" id="output" style="display:none;"></div>
+        <div style="margin-top: 10px;">
+          <a href="main.php" class="btn custom-btn">Read more</a>
         </div>
-      </form>
-
-      <div class="custom-output" id="output" style="display:none;"></div>
-      <div style="margin-top: 10px;">
-    <a href="main.php" class="btn custom-btn">Read more</a>
-</div>
-      <div id="error"  class="custom-error"  style="display:none;"></div>
-      <pre  id="debug"  class="custom-debug"  style="display:none;"></pre>
+        <div id="error" class="custom-error" style="display:none;"></div>
+        <pre id="debug" class="custom-debug" style="display:none;"></pre>
+      </div>
+      <!-- Right: Image -->
+      <div class="col-lg-4 col-12 d-flex align-items-start">
+        <div id="topic-image" style="display:none; width:100%;">
+          <img id="topic-img-tag" src="" alt="Topic Image" class="img-fluid rounded shadow" style="max-height:300px; width:100%; object-fit:contain;">
+        </div>
+      </div>
     </div>
-  </section>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
+  </div>
+</section>
 
 
             <section class="featured-section">
@@ -259,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                         <div>
                                             <h5 class="text-white mb-2">Finance</h5>
 
-                                            <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
+                                            
 
                                             <a href="topic-details.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                         </div>
@@ -348,7 +343,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                                         <div>
                                                             <h5 class="mb-2">Web Design</h5>
 
-                                                            <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
+                                                           
                                                         </div>
 
                                                         <span class="badge bg-design rounded-pill ms-auto">14</span>
@@ -695,8 +690,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                         <div class="col-lg-6 col-12 m-auto">
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item special-accordion-item">
-    <h2 class="accordion-header" id="headingOne" style="border: 3px solid var(--primary-color);
-  border-radius: var(--border-radius-medium);
+    <h2 class="accordion-header" id="headingOne" style="
+  border-radius: none;
   background: var(--white-color);
   padding: 10px 0;">
         <button class="accordion-button collapsed special-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -710,7 +705,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     </div>
 </div>
 
-                                <div class="accordion-item">
+                                <div class="accordion-item lighter-accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         How accurate is the information generated?
@@ -724,7 +719,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
+                                <div class="accordion-item lightest-accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                         Is this tool free to use?
@@ -817,7 +812,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                     <div class="col-lg-3 col-12 mb-4 pb-2">
                         <a class="navbar-brand mb-2" href="index.php">
                             <i class="bi-back"></i>
-                            <span>Topic</span>
+                            <span>Apollo AI</span>
                         </a>
                     </div>
 
@@ -914,7 +909,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                     dbgEl.style.display = 'block';
                 }
             } else {
-                outEl.textContent = json.result;
+                $('#output').html(marked.parse(json.result));
+if (window.MathJax) MathJax.typesetPromise([document.getElementById('output')]);
+
+                // Place the Pixabay fetch code here
+                const topic = document.getElementById('prompt-input').value.trim();
+
+fetch(`https://pixabay.com/api/?key=50494584-87d85c2a13020ebc5144f3a07&q=${encodeURIComponent(topic)}&image_type=photo&per_page=3&safesearch=true`)
+  .then(resp => resp.json())
+  .then(data => {
+    if (data.hits && data.hits.length > 0) {
+      document.getElementById('topic-img-tag').src = data.hits[0].webformatURL;
+      document.getElementById('topic-image').style.display = 'block';
+    } else {
+      document.getElementById('topic-image').style.display = 'none';
+    }
+  })
+  .catch(() => {
+    document.getElementById('topic-image').style.display = 'none';
+  });
 
                 // Pass conversation data to main.php
                 const readMoreBtn = document.querySelector('.btn.custom-btn');
@@ -945,6 +958,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
         <script src="js/jquery.sticky.js"></script>
         <script src="js/click-scroll.js"></script>
         <script src="js/custom.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

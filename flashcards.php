@@ -156,6 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
                     </form>
                     <div id="flashcard-area"></div>
                     <div class="custom-error" id="error" style="display:none;"></div>
+                    <div class="custom-output" id="output" style="display:none;"></div>
                 </div>
             </div>
         </div>
@@ -221,7 +222,12 @@ function renderFlashcard() {
     document.getElementById('next-btn').onclick = () => { if (current < flashcards.length-1) { current++; flipped = false; renderFlashcard(); } };
 }
 </script>
+<script src="js/main.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </body>
 </html>

@@ -845,7 +845,7 @@ blockquote {
 
 /* Add a dark blue border around the entire FAQ accordion */
 .faq-section .accordion {
-  border: 3px solid var(--primary-color);
+  border: none;
   border-radius: var(--border-radius-medium);
   background: var(--white-color);
   padding: 10px 0;
@@ -1153,13 +1153,67 @@ blockquote {
 
 /* Light blue background for the first accordion item */
 .special-accordion-item .special-accordion-btn {
-    background: #0095ff; /* Light blue, matches Bootstrap info bg */
-    color: var(--primary-color);
+    background: var(--primary-color); /* Dark blue */
+    color: #fff;
     font-weight: var(--font-weight-bold);
-    border-bottom: 1px solid var(--primary-color);
+    border-bottom: none;
 }
 .special-accordion-item .special-accordion-btn:not(.collapsed) {
-    background: var(--secondary-color);
+    background: var(--primary-color); /* Keep dark blue when open */
     color: #fff;
+}
+
+/* Center textarea text vertically (move it down) */
+textarea.form-control {
+  padding-top: 60px !important;
+  padding-bottom: 20px !important;
+  min-height: 20px;
+  /* text-align: center; */
+  resize: vertical;
+}
+
+/* Make textarea just a bit bigger than the text and allow it to grow */
+textarea.form-control {
+  min-height: 44px;
+  max-height:65px;
+  padding-top: 15px !important;
+  padding-bottom: 1px !important;
+  resize: none; /* We'll handle resizing with JS */
+  overflow-y: hidden;
+  /* text-align: center;  // Optional: keep or remove as you wish */
+}
+
+/* First question: dark blue */
+.special-accordion-item .accordion-button {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+    font-weight: var(--font-weight-bold);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Second question: lighter blue */
+.lighter-accordion-item .accordion-button {
+    background: #357ca5 !important; /* a lighter blue than --primary-color */
+    color: #fff !important;
+    font-weight: var(--font-weight-bold);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Third question: even lighter blue */
+.lightest-accordion-item .accordion-button {
+    background: #b3d8ef !important; /* much lighter blue */
+    color: var(--primary-color) !important;
+    font-weight: var(--font-weight-bold);
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#topic-image {
+  position: sticky;
+  top: 180px;
+  align-self: flex-start;
+  margin-top: 40px;
 }
 
