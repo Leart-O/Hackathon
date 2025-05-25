@@ -125,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
             </div>
         </div>
     </section>
+    <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23473.182190548214!2d21.1177961743164!3d42.658223799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549eeb8dca42eb%3A0x6e2e935d0eaa29c4!2sShkolla%20Digjitale%20%7C%20Digital%20School!5e0!3m2!1sen!2s!4v1748162918883!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </main>
 <script>
 const flashcardArea = document.getElementById('flashcard-area');

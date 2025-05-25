@@ -690,30 +690,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                         <div class="col-lg-6 col-12 m-auto">
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Does it need to paid?
-                                    </button>
-                                    </h2>
-
-                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="accordion-item special-accordion-item">
+    <h2 class="accordion-header" id="headingOne" style="border: 3px solid var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  background: var(--white-color);
+  padding: 10px 0;">
+        <button class="accordion-button collapsed special-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            What kinds of topics can I study with this AI?
+        </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            You can study virtually anything! From school subjects like biology, history, and math, to broader topics like personal finance, coding, or even specific exam prep. Just type in what you want to learn, and the AI will generate content tailored to it.
+        </div>
+    </div>
+</div>
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Does it need to paid?
+                                        How accurate is the information generated?
                                     </button>
                                     </h2>
 
                                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            The AI pulls from a wide base of reliable sources and is designed to provide accurate, up-to-date, and easy-to-understand explanations. However, it's always good to double-check with official materials for high-stakes exams or specialized content.
                                         </div>
                                     </div>
                                 </div>
@@ -721,13 +723,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingThree">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Does it need to paid?
+                                        Is this tool free to use?
                                     </button>
                                     </h2>
 
                                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            We offer a free basic version with full access to learning materials, quizzes, and flashcards. Premium plans with extra features (like progress tracking or advanced customization) may be available in the future as we grow.
                                         </div>
                                     </div>
                                 </div>
@@ -748,7 +750,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                         </div>
 
                         <div class="col-lg-5 col-12 mb-4 mb-lg-0">
-                            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23473.182190548214!2d21.1177961743164!3d42.658223799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549eeb8dca42eb%3A0x6e2e935d0eaa29c4!2sShkolla%20Digjitale%20%7C%20Digital%20School!5e0!3m2!1sen!2s!4v1748162918883!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">

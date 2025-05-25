@@ -1,4 +1,3 @@
-
 :root {
   --white-color:                  #ffffff;
   --primary-color:                #13547a;
@@ -844,6 +843,15 @@ blockquote {
   line-height: 40px;
 }
 
+/* Add a dark blue border around the entire FAQ accordion */
+.faq-section .accordion {
+  border: 3px solid var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  background: var(--white-color);
+  padding: 10px 0;
+}
+
+
 /*---------------------------------------
   NEWSLETTER               
 -----------------------------------------*/
@@ -1141,5 +1149,17 @@ blockquote {
   h5 {
     font-size: 20px;
   }
+}
+
+/* Light blue background for the first accordion item */
+.special-accordion-item .special-accordion-btn {
+    background: #0095ff; /* Light blue, matches Bootstrap info bg */
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+    border-bottom: 1px solid var(--primary-color);
+}
+.special-accordion-item .special-accordion-btn:not(.collapsed) {
+    background: var(--secondary-color);
+    color: #fff;
 }
 
