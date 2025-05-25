@@ -827,20 +827,14 @@ blockquote {
   font-weight: var(--font-weight-semibold);
 }
 
-.faq-section .accordion-item:first-of-type .accordion-button {
-  border-radius: var(--border-radius-large);
+/* Make all FAQ accordion buttons square (no border radius) */
+.faq-section .accordion-button {
+    border-radius: 0 !important;
 }
-
 .faq-section .accordion-button:not(.collapsed) {
-  border-radius: var(--border-radius-large);
-  box-shadow: none;
-  color: var(--primary-color);
-}
-
-.faq-section .accordion-body {
-  color: var(--p-color);
-  font-size: var(--btn-font-size);
-  line-height: 40px;
+    border-radius: 0 !important;
+    box-shadow: none;
+    color: var(--primary-color);
 }
 
 /* Add a dark blue border around the entire FAQ accordion */

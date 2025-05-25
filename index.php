@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                         <div class="col-lg-4 col-12 mb-4 mb-lg-0">
                             <div class="custom-block bg-white shadow-lg">
-                                <a href="topic-details.php">
+                                <a href="#">
                                     <div class="d-flex">
                                         <div>
                                             <h5 class="mb-2">Web Design</h5>
@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                             
 
-                                            <a href="topic-details.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                            <a href="#" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                         </div>
 
                                         <span class="badge bg-finance rounded-pill ms-auto">25</span>
@@ -307,23 +307,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                     <div class="row">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Biology</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
+                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">World History</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
+                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Mathematics</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
+                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Computer Science</button>
                             </li>
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
+                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Personal Development</button>
                             </li>
                         </ul>
                     </div>
@@ -338,10 +338,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Web Design</h5>
+                                                            <h5 class="mb-2">Cellular Biology</h5>
+                                                            <p>Cell structure & function, membranes & transport, cell signaling</p>
 
                                                            
                                                         </div>
@@ -356,12 +357,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Graphic</h5>
+                                                            <h5 class="mb-2">Genetics</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">Mendelian inheritance, DNA replication & repair, genetic engineering</p>
                                                         </div>
 
                                                         <span class="badge bg-design rounded-pill ms-auto">75</span>
@@ -374,12 +375,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Logo Design</h5>
+                                                            <h5 class="mb-2">Ecology & Evolution</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">Ecosystem dynamics, natural selection, conservation biology</p>
                                                         </div>
 
                                                         <span class="badge bg-design rounded-pill ms-auto">100</span>
@@ -396,12 +397,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topic-details.php">
+                                                    <a href="#">
                                                         <div class="d-flex">
                                                             <div>
-                                                                <h5 class="mb-2">Advertising</h5>
+                                                                <h5 class="mb-2">Ancient Civilizations</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">Mesopotamia & Egypt, Indus Valley & China, Classical Greece & Rome</p>
                                                             </div>
 
                                                             <span class="badge bg-advertising rounded-pill ms-auto">30</span>
@@ -414,12 +415,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topic-details.php">
+                                                    <a href="#">
                                                         <div class="d-flex">
                                                             <div>
-                                                                <h5 class="mb-2">Video Content</h5>
+                                                                <h5 class="mb-2">Middle Ages to Renaissance</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">Feudalism, the Crusades, Renaissance art & science</p>
                                                             </div>
 
                                                             <span class="badge bg-advertising rounded-pill ms-auto">65</span>
@@ -432,12 +433,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                             <div class="col-lg-4 col-md-6 col-12">
                                                 <div class="custom-block bg-white shadow-lg">
-                                                    <a href="topic-details.php">
+                                                    <a href="#">
                                                         <div class="d-flex">
                                                             <div>
-                                                                <h5 class="mb-2">Viral Tweet</h5>
+                                                                <h5 class="mb-2">Modern Era</h5>
 
-                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                                <p class="mb-0">Industrial Revolution, world wars & geopolitics, globalization</p>
                                                             </div>
 
                                                             <span class="badge bg-advertising rounded-pill ms-auto">50</span>
@@ -453,12 +454,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                 <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Investment</h5>
+                                                            <h5 class="mb-2">Algebra & Number Theory</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Linear equations, polynomials, prime numbers & divisibility</p>
                                                         </div>
 
                                                         <span class="badge bg-finance rounded-pill ms-auto">30</span>
@@ -476,11 +477,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                                     <div class="custom-block-overlay-text d-flex">
                                                         <div>
-                                                            <h5 class="text-white mb-2">Finance</h5>
+                                                            <h5 class="text-white mb-2">Calculus</h5>
 
-                                                            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis</p>
+                                                            <p class="text-white">Limits & continuity, differentiation applications, basic integration</p>
 
-                                                            <a href="topic-details.php" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                                            <a href="#" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                                                         </div>
 
                                                         <span class="badge bg-finance rounded-pill ms-auto">25</span>
@@ -517,12 +518,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Composing Song</h5>
+                                                            <h5 class="mb-2">Programming Fundamentals</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Variables & control flow, data structures (arrays, lists, trees), object-oriented concepts</p>
                                                         </div>
 
                                                         <span class="badge bg-music rounded-pill ms-auto">45</span>
@@ -535,12 +536,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Online Music</h5>
+                                                            <h5 class="mb-2">Algorithms & Complexity</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Sorting & searching, recursion, Big O notation</p>
                                                         </div>
 
                                                         <span class="badge bg-music rounded-pill ms-auto">45</span>
@@ -553,12 +554,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Podcast</h5>
+                                                            <h5 class="mb-2">Web Development</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">HTML/CSS basics, JavaScript & DOM, RESTful APIs</p>
                                                         </div>
 
                                                         <span class="badge bg-music rounded-pill ms-auto">20</span>
@@ -575,12 +576,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Graduation</h5>
+                                                            <h5 class="mb-2">Time Management</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Prioritization techniques, Pomodoro & productivity hacks, goal setting</p>
                                                         </div>
 
                                                         <span class="badge bg-education rounded-pill ms-auto">80</span>
@@ -593,12 +594,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="custom-block bg-white shadow-lg">
-                                                <a href="topic-details.php">
+                                                <a href="#">
                                                     <div class="d-flex">
                                                         <div>
-                                                            <h5 class="mb-2">Educator</h5>
+                                                            <h5 class="mb-2">Critical Thinking</h5>
 
-                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            <p class="mb-0">Logical fallacies, argument analysis, decision-making frameworks</p>
                                                         </div>
 
                                                         <span class="badge bg-education rounded-pill ms-auto">75</span>
@@ -690,10 +691,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                         <div class="col-lg-6 col-12 m-auto">
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item special-accordion-item">
-    <h2 class="accordion-header" id="headingOne" style="
-  border-radius: none;
-  background: var(--white-color);
-  padding: 10px 0;">
+    <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button collapsed special-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
             What kinds of topics can I study with this AI?
         </button>
