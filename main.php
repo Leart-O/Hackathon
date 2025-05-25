@@ -174,6 +174,9 @@ if (isset($_POST['conversation_data'])) {
                 </ul>
                 <div class="d-none d-lg-block">
                     <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

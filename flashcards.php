@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';
+    $apiKey = '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';
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -72,31 +72,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        .flashcard-container { display: flex; flex-direction: column; align-items: center; margin-top: 30px; }
+        /* Flashcard container improvements */
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        /* Responsive flashcard size */
         .flashcard {
-            width: 350px; height: 200px;
+            width: 100%;
+            max-width: 400px;
+            min-height: 180px;
+            height: auto;
             perspective: 1000px;
             margin-bottom: 20px;
         }
+
         .flashcard-inner {
             position: relative;
-            width: 100%; height: 100%;
+            width: 100%;
+            min-height: 180px;
             transition: transform 0.6s;
             transform-style: preserve-3d;
         }
+
         .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+
         .flashcard-front, .flashcard-back {
-            position: absolute; width: 100%; height: 100%;
+            position: absolute;
+            width: 100%;
+            min-height: 180px;
+            box-sizing: border-box;
             backface-visibility: hidden;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: var(--border-radius-medium);
             background: var(--section-bg-color);
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            font-size: 1.3rem;
-            padding: 30px;
+            font-size: 1.15rem;
+            padding: 24px;
+            text-align: center;
+            overflow-y: auto;
+            word-break: break-word;
+            max-height: 300px;
         }
+
         .flashcard-back { transform: rotateY(180deg); }
+
         .flashcard-controls button { margin: 0 10px; }
+
+        @media (max-width: 600px) {
+            .flashcard { max-width: 98vw; }
+            .flashcard-front, .flashcard-back { font-size: 1rem; padding: 12px; }
+        }
     </style>
 </head>
 <body id="top">
@@ -105,8 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi-back"></i>
-                <span>Topic</span>
+                <span>Apollo AI</span>
             </a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
+            <?php endif; ?>
         </div>
     </nav>
     <section class="hero-section d-flex justify-content-center align-items-center" style="padding-bottom:40px;">
@@ -125,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
             </div>
         </div>
     </section>
-    <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23473.182190548214!2d21.1177961743164!3d42.658223799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549eeb8dca42eb%3A0x6e2e935d0eaa29c4!2sShkolla%20Digjitale%20%7C%20Digital%20School!5e0!3m2!1sen!2s!4v1748162918883!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
 </main>
 <script>
 const flashcardArea = document.getElementById('flashcard-area');

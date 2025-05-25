@@ -1,10 +1,11 @@
 <?php
+session_start(); // Add this at the very top
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = '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'; // Your OpenRouter API key
+    $apiKey = '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'; // Your OpenRouter API key
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
@@ -166,18 +167,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
 
                                 <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="topic-listing.php">Topics Listing</a></li>
+                                    <li><a class="dropdown-item" href="signup.php">Sign Up</a></li>
 
-                                    <li><a class="dropdown-item" href="contact.php">Contact Form</a></li>
+                                    <li><a class="dropdown-item" href="login.php">Log In</a></li>
                                 </ul>
                             </li>
                         </ul>
 
                         <div class="d-none d-lg-block">
                             <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                            <?php if (isset($_SESSION['user_id'])): ?>
+                                <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -756,7 +760,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                         <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
                             <h4 class="mb-3">Head office</h4>
 
-                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+                            <p>Shkolla Digjitale | Digital School</p>
 
                             <hr>
 
@@ -778,9 +782,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mx-auto">
-                            <h4 class="mb-3">Dubai office</h4>
+                            <h4 class="mb-3">Prishtina office</h4>
 
-                            <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+                            <p>Pashko Vasa, nr.28, Pejton, Prishtina 10000</p>
 
                             <hr>
 
@@ -869,7 +873,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
                             </ul>
                         </div>
 
-                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.</p>
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Apollo AI Listing Center. All rights reserved.</p>
                         
                         
                     </div>

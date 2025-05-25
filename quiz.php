@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';
+    $apiKey = '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';
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -73,11 +73,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        .quiz-card { margin-bottom: 25px; }
-        .quiz-option { cursor: pointer; }
-        .quiz-option.selected { background: var(--secondary-color); color: #fff; }
-        .quiz-option.correct { background: #28a745 !important; color: #fff; }
-        .quiz-option.incorrect { background: #dc3545 !important; color: #fff; }
+        .quiz-card {
+            margin-bottom: 25px;
+            border-radius: var(--border-radius-medium);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border: none;
+            background: var(--section-bg-color);
+        }
+
+        .quiz-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .quiz-option {
+            cursor: pointer;
+            border-radius: var(--border-radius-small);
+            margin-bottom: 10px;
+            padding: 10px 16px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .quiz-option.selected {
+            background: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+        }
+
+        .quiz-option.correct {
+            background: #28a745 !important;
+            color: #fff;
+            border-color: #28a745;
+        }
+
+        .quiz-option.incorrect {
+            background: #dc3545 !important;
+            color: #fff;
+            border-color: #dc3545;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 12px;
+        }
+
+        #quiz-result .alert {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .quiz-card .card-body { padding: 1rem; }
+            .quiz-option { font-size: 0.98rem; padding: 8px 8px; }
+        }
     </style>
 </head>
 <body id="top">
@@ -88,6 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
                 <i class="bi-back"></i>
                 <span>Apollo AI</span>
             </a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
+            <?php endif; ?>
         </div>
     </nav>
     <section class="hero-section d-flex justify-content-center align-items-center" style="padding-bottom:40px;">
