@@ -190,8 +190,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
 
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
   <div class="container">
-    <form id="prompt-form">
+    <form id="prompt-form"> 
+    <h1 style="color:white">Start your learning journey:</h1>
       <div class="custom-form d-flex">
+       
         <input
           type="text"
           name="prompt"
