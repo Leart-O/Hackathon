@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = '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'; // 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 alternative key if not working
+    $apiKey = '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'; // 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
         'messages' => [
             [
                 'role' => 'system',
-                'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as Ai(artificial intelligence), math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
+                'content' => 'You are a helpful assistant for students. Only give answers that are below 300 character limit so that a short and helpful description is given. Only answer questions related to school, academic, or scholarly topics (such as Ai(artificial intelligence), math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
             ],
             [
                 'role' => 'user',

@@ -720,3 +720,73 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+{"id":"gen-1749801706-YdwEzcnbzuNEU4rPNPRl","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749801706,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Sorry, I can only answer questions about academic topics.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":94,"completion_tokens":11,"total_tokens":105,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "why do we need ai in our lives"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749801949-uKdcwMnZv40jhcQSZIjG","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749801949,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"AI, or artificial intelligence, is important in our lives for several reasons:\n\n1. **Automation**: AI can automate repetitive and mundane tasks, freeing up humans to focus on more complex and creative activities. This increases productivity and efficiency in various industries.\n\n2. **Data Analysis**: AI can process and analyze large amounts of data much faster than humans, uncovering insights and patterns that can be used to make informed decisions in fields like healthcare, finance, and marketing.\n\n3. **Personalization**: AI algorithms can analyze user behavior to personalize experiences, such as recommending products, music, or movies based on individual preferences.\n\n4. **Improved Healthcare**: AI is used in medical diagnosis, predicting patient outcomes, and personalizing treatment plans, leading to better and more efficient healthcare services.\n\n5. **Enhanced Safety**: AI technologies are used in various safety applications, such as autonomous vehicles, fraud detection, and monitoring systems that can predict and prevent accidents or security breaches.\n\n6. **Innovation**: AI drives innovation by enabling the development of new products and services, such as smart assistants, language translation services, and advanced robotics.\n\n7. **Problem Solving**: AI can tackle complex problems in science, engineering, and logistics, helping to find solutions that might be difficult or impossible for humans to achieve alone.\n\nOverall, AI enhances our capabilities and provides tools that can lead to advancements and improvements in many aspects of our lives.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":143,"completion_tokens":288,"total_tokens":431,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "why do we need ai in our lives"
+        },
+        {
+            "role": "assistant",
+            "content": "Sorry, I can only answer questions about academic topics."
+        },
+        {
+            "role": "user",
+            "content": "why do we need AI in our lives"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
