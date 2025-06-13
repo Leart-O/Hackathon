@@ -790,3 +790,153 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749813506-T8NIcGeGqqI1igeHMLP6","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749813506,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Artificial Intelligence (AI) is important for several reasons:\n\n1. **Automation**: AI enables the automation of tasks that were once thought to require human intelligence. This can increase efficiency and productivity in various industries, such as manufacturing, healthcare, and transportation.\n\n2. **Data Analysis**: AI systems can analyze large amounts of data quickly and accurately, providing insights that might not be immediately apparent to humans. This is crucial for fields like big data analytics and research.\n\n3. **Personalization**: AI allows for personalized experiences in areas such as online shopping, streaming services, and digital advertising by analyzing user behavior and preferences.\n\n4. **Decision Making**: AI can assist in decision-making processes by providing data-driven insights and recommendations. This is used in finance, healthcare, and business strategy.\n\n5. **Improved Services**: AI enhances customer service through chatbots and virtual assistants, providing immediate responses and support.\n\n6. **Innovation**: AI drives innovation by enabling new products and services, such as autonomous vehicles, advanced robotics, and smart home devices.\n\n7. **Healthcare Advancements**: AI is used in medical diagnostics, personalized medicine, and drug discovery, improving patient outcomes and treatment efficiency.\n\n8. **Safety and Security**: AI enhances safety and security measures, such as fraud detection, cybersecurity, and surveillance systems.\n\nOverall, AI has the potential to transform various aspects of society and industry by improving efficiency, fostering innovation, and providing new capabilities.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":112,"completion_tokens":294,"total_tokens":406,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "the importance of ai"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749815359-7poQugKc7WlkH5OBWccF","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749815359,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Algebra is a fundamental part of mathematics that provides several important benefits and applications:\n\n1. **Problem-Solving Skills**: Algebra enhances logical thinking and problem-solving skills. It teaches you how to approach complex problems step by step and find solutions, which is a valuable skill in any field.\n\n2. **Foundation for Advanced Mathematics**: Algebra is a building block for more advanced areas of mathematics, including calculus, statistics, and trigonometry. Understanding algebra is essential for studying these subjects.\n\n3. **Real-World Applications**: Algebra is used in various real-world applications, such as engineering, economics, medicine, and technology. It helps in modeling and solving problems related to rates, patterns, and trends.\n\n4. **Critical Thinking**: Learning algebra helps develop critical thinking skills by requiring you to understand abstract concepts and work with variables and unknowns.\n\n5. **Career Opportunities**: Many careers in science, technology, engineering, and mathematics (STEM) fields require a strong understanding of algebra. It opens up opportunities in diverse industries such as finance, computer science, and architecture.\n\nOverall, algebra is a crucial component of education that equips students with essential skills for academic and professional success.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":112,"completion_tokens":241,"total_tokens":353,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "Why we need algebra"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749817551-mlP5AZTm2otoq09UfMIc","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749817552,"choices":[{"logprobs":null,"finish_reason":"length","native_finish_reason":"length","index":0,"message":{"role":"assistant","content":"Here are some common algebra formulas:\n\n1. **Quadratic Formula**: Used to find the roots of a quadratic equation \\( ax^2 + bx + c = 0 \\).\n   \\[\n   x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\n   \\]\n\n2. **Difference of Squares**: \n   \\[\n   a^2 - b^2 = (a + b)(a - b)\n   \\]\n\n3. **Square of a Binomial**:\n   \\[\n   (a + b)^2 = a^2 + 2ab + b^2\n   \\]\n   \\[\n   (a - b)^2 = a^2 - 2ab + b^2\n   \\]\n\n4. **Sum and Difference of Cubes**:\n   \\[\n   a^3 + b^3 = (a + b)(a^2 - ab + b^2)\n   \\]\n   \\[\n   a^3 - b^3 = (a - b)(a^2 + ab + b^2)\n   \\]\n\n5. **Exponential Growth/Decay**: \n   \\[\n   y = a(1 + r)^t \\quad \\text{(growth)}\n   \\]\n   \\[\n   y = a(1 - r)^t \\quad \\text{(decay)}\n   \\]\n   where \\( a \\) is","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":113,"completion_tokens":300,"total_tokens":413,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what are some algebra formulas"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
