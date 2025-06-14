@@ -44,7 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
                    ->fetchAll(PDO::FETCH_ASSOC);
 
     // Call OpenRouter
+<<<<<<< HEAD
     $apiKey = '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'; // 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 alternative key if not working
+=======
+    $apiKey = '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'; // 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 alternative key if not working
+>>>>>>> 25a9852dddd5f673d0dc17bf72825cd3f4337012
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [
@@ -57,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     // Add a strict system prompt for academic topics only
     array_unshift($payload['messages'], [
         'role' => 'system',
-        'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
+        'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
     ]);
 
     foreach ($messages as $msg) {
