@@ -720,3 +720,113 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 401
+Response: {"error":{"message":"No auth credentials found","code":401}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749799650-BbMUecVWtYCsl2UDjxmh","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749799650,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy in the form of glucose. This process occurs mainly in the chloroplasts of plant cells and involves the green pigment chlorophyll. During photosynthesis, plants absorb carbon dioxide from the air and water from the soil. Using the energy from sunlight, they transform these raw materials into glucose and oxygen. The overall chemical equation for photosynthesis can be summarized as:\n\n\\[ 6 \\text{CO}_2 + 6 \\text{H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6 \\text{O}_2 \\]\n\nThis process is crucial because it provides the primary source of energy for nearly all life on Earth and is responsible for releasing oxygen into the atmosphere.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":106,"completion_tokens":187,"total_tokens":293,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1749799666-TxaCPESHgrUt1TkKjzDw","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1749799666,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Photosynthesis is vital to humans and all other animals primarily for two reasons:\n\n1. **Oxygen Production**: Photosynthesis releases oxygen as a byproduct. The oxygen produced by plants, algae, and certain bacteria during photosynthesis is essential for human survival, as it is required for the process of cellular respiration, which is how humans and most other organisms obtain energy from food.\n\n2. **Food Source**: Photosynthesis is the foundation of the food chain. It produces glucose, which plants use to grow and develop. These plants become food for herbivores, which in turn may be consumed by carnivores. Even humans, who are omnivores, rely directly on plants for fruits, vegetables, grains, and indirectly when consuming animal products.\n\nOverall, photosynthesis is critical because it sustains the environment that supports human life and provides the energy necessary for survival and growth.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_07871e2ad8","usage":{"prompt_tokens":307,"completion_tokens":178,"total_tokens":485,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Error: no response"
+        },
+        {
+            "role": "user",
+            "content": "what is photosynthesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy in the form of glucose. This process occurs mainly in the chloroplasts of plant cells and involves the green pigment chlorophyll. During photosynthesis, plants absorb carbon dioxide from the air and water from the soil. Using the energy from sunlight, they transform these raw materials into glucose and oxygen. The overall chemical equation for photosynthesis can be summarized as:\n\n\\[ 6 \\text{CO}_2 + 6 \\text{H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6 \\text{O}_2 \\]\n\nThis process is crucial because it provides the primary source of energy for nearly all life on Earth and is responsible for releasing oxygen into the atmosphere."
+        },
+        {
+            "role": "user",
+            "content": "why is it important to humans"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
