@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
                    ->fetchAll(PDO::FETCH_ASSOC);
 
     // Call OpenRouter
-    $apiKey = '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'; // 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 alternative key if not working
+    $apiKey = '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'; // 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [

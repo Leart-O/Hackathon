@@ -8,7 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $db->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
     if ($stmt->execute([$username, $email, $password])) {
-        header('Location: login.php');
+        // Start session and set user data after successful signup
+        session_start();
+        $_SESSION['user_id'] = $db->lastInsertId();
+        header('Location: main.php');
         exit;
     } else {
         $error = 'Error creating account.';
