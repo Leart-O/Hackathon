@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';// 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 alternative key if not working
+    $apiKey = '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';// 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -72,118 +72,225 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        /* Flashcard container improvements */
-        .flashcard-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 30px;
-            width: 100%;
+        body {
+            background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Responsive flashcard size */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #13547a;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand i {
+            margin-right: 8px;
+        }
+
+        main {
+            padding-top: 76px;
+            min-height: calc(100vh - 100px);
+            background: transparent;
+        }
+
+        .hero-section {
+            background: transparent;
+            padding: 60px 0;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #13547a;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #0d3d5a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline-primary {
+            color: #13547a;
+            border: 2px solid #13547a;
+        }
+
+        .btn-outline-primary:hover {
+            background: #13547a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-control {
+            border: 2px solid rgba(19, 84, 122, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #13547a;
+            box-shadow: 0 0 0 3px rgba(19, 84, 122, 0.1);
+        }
+
+        /* Specific styles for quiz */
+        .quiz-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(19, 84, 122, 0.1);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(19, 84, 122, 0.05);
+            transform: translateX(5px);
+        }
+
+        /* Specific styles for flashcards */
         .flashcard {
-            width: 100%;
-            max-width: 400px;
-            min-height: 180px;
-            height: auto;
             perspective: 1000px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            height: 300px;
         }
 
         .flashcard-inner {
             position: relative;
             width: 100%;
-            min-height: 180px;
-            transition: transform 0.6s;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
             transform-style: preserve-3d;
         }
 
-        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
 
         .flashcard-front, .flashcard-back {
             position: absolute;
             width: 100%;
-            min-height: 180px;
-            box-sizing: border-box;
+            height: 100%;
             backface-visibility: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: var(--border-radius-medium);
-            background: var(--section-bg-color);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            font-size: 1.15rem;
-            padding: 24px;
-            text-align: center;
-            overflow-y: auto;
-            word-break: break-word;
-            max-height: 300px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .flashcard-back { transform: rotateY(180deg); }
-
-        .flashcard-controls button {
-            margin: 0 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px !important;
-            min-width: 90px;
-            transition: background 0.2s, color 0.2s, border 0.2s;
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background: #13547a;
+            color: white;
         }
 
-        #prev-btn, #next-btn {
-            background: #13547a !important;
-            color: #fff !important;
-            border: 2px solid #13547a !important;
+        .custom-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
 
-        #prev-btn:disabled, #next-btn:disabled {
-            background: #b3d8ef !important;
-            color: #fff !important;
-            border: 2px solid #b3d8ef !important;
-            opacity: 0.7;
+        .custom-output {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
-        #flip-btn {
-            background: #F9A826 !important;
-            color: #fff !important;
-            border: 2px solid #F9A826 !important;
-        }
-
-        .flashcard-controls button:hover:not(:disabled) {
-            filter: brightness(1.1);
-            box-shadow: 0 2px 8px rgba(19,84,122,0.15);
-        }
-
-        .flashcard-controls + .mt-2 {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #13547a;
-            background: #e3f2fd;
-            border-radius: 20px;
-            padding: 6px 18px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 600px) {
-            .flashcard { max-width: 98vw; }
-            .flashcard-front, .flashcard-back { font-size: 1rem; padding: 12px; }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-section {
+                padding: 40px 0;
+            }
+            
+            .flashcard {
+                height: 250px;
+            }
         }
     </style>
 </head>
 <body id="top">
 <main>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi-back"></i>
                 <span>Apollo AI</span>
             </a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
-            <?php endif; ?>
+            <div class="ms-auto">
+                <a href="main.php" class="btn btn-outline-primary me-2">
+                    <i class="bi bi-arrow-left-circle"></i> Back to Dashboard
+                </a>
+                <a href="logout.php" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
         </div>
     </nav>
     <section class="hero-section d-flex justify-content-center align-items-center" style="padding-bottom:40px;">
@@ -203,7 +310,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
             </div>
         </div>
     </section>
-    
 </main>
 <script>
 const flashcardArea = document.getElementById('flashcard-area');

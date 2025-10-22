@@ -5,10 +5,75 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// Put the API key in one place so both handlers can use it
+$apiKey = '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'; // existing key in your file
+
+// Explain endpoint: returns one short sentence explanation for a question's correct answer
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'explain') {
+    header('Content-Type: application/json');
+    $question = trim($_POST['question'] ?? '');
+    $correct = trim($_POST['correct'] ?? '');
+
+    if ($question === '' || $correct === '') {
+        echo json_encode(['error' => 'Missing question or correct answer.']);
+        exit;
+    }
+
+    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
+    $payload = [
+        'model' => 'openai/gpt-4o',
+        'messages' => [
+            [
+                'role' => 'system',
+                'content' => 'You are a helpful teaching assistant. Provide a single concise (1-2 sentence) plain-English explanation why the correct answer is correct for the provided multiple-choice question. Do not output JSON—only the explanation text.'
+            ],
+            [
+                'role' => 'user',
+                'content' => "Question: {$question}\nCorrect answer (text): {$correct}\nProvide a short explanation for why that answer is correct."
+            ]
+        ],
+        'max_tokens' => 80,
+        'temperature' => 0.2,
+    ];
+
+    $ch = curl_init($endpoint);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey,
+        'X-Title: Hackathon Explain'
+    ]);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+    $response = curl_exec($ch);
+    $curlError = curl_error($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($curlError) {
+        echo json_encode(['error' => "cURL error: $curlError"]);
+        exit;
+    }
+    if ($httpCode >= 400) {
+        echo json_encode(['error' => "API error (HTTP $httpCode). Response: " . ($response ?: 'empty')]);
+        exit;
+    }
+
+    $data = json_decode($response, true);
+    $content = $data['choices'][0]['message']['content'] ?? $response ?? '';
+    $explanation = trim(strip_tags($content));
+    if ($explanation === '') {
+        echo json_encode(['error' => 'No explanation returned by API.']);
+    } else {
+        echo json_encode(['explanation' => $explanation]);
+    }
+    exit;
+}
+
+// Original quiz generation handler (unchanged except moved $apiKey is used)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';// 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
@@ -42,11 +107,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
         echo json_encode(['error' => "cURL error: $curlError"]);
         exit;
     }
-  
+
     $data = json_decode($response, true);
     $content = $data['choices'][0]['message']['content'] ?? '';
 
-    
     if (preg_match('/<json>(.*?)<\/json>/is', $content, $m)) {
         $json_str = trim($m[1]);
     } else {
@@ -56,7 +120,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     if (is_array($quiz)) {
         echo json_encode(['quiz' => $quiz]);
     } else {
-       
         $refusal = trim(strip_tags($content));
         echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again or change api key (emergency api key in comment on the code next to the current one)']);
     }
@@ -73,74 +136,225 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <style>
-        .quiz-card {
-            margin-bottom: 25px;
-            border-radius: var(--border-radius-medium);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            border: none;
-            background: var(--section-bg-color);
-        }
+        body {
+    background: linear-gradient(135deg, #13547a 0%, #80d0c7 100%);
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+}
 
-        .quiz-card .card-body {
-            padding: 1.5rem;
-        }
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
 
-        .quiz-option {
-            cursor: pointer;
-            border-radius: var(--border-radius-small);
-            margin-bottom: 10px;
-            padding: 10px 16px;
-            background: #fff;
-            border: 1px solid var(--border-color);
-            transition: background 0.2s, color 0.2s, border 0.2s;
-            display: flex;
-            align-items: center;
-        }
+.navbar-brand {
+    font-weight: 700;
+    color: #13547a;
+    font-size: 1.5rem;
+}
 
-        .quiz-option.selected {
-            background: var(--secondary-color);
-            color: #fff;
-            border-color: var(--secondary-color);
-        }
+.navbar-brand i {
+    margin-right: 8px;
+}
 
-        .quiz-option.correct {
-            background: #28a745 !important;
-            color: #fff;
-            border-color: #28a745;
-        }
+main {
+    padding-top: 76px;
+    min-height: calc(100vh - 100px);
+    background: transparent;
+}
 
-        .quiz-option.incorrect {
-            background: #dc3545 !important;
-            color: #fff;
-            border-color: #dc3545;
-        }
+.hero-section {
+    background: transparent;
+    padding: 60px 0;
+}
 
-        .quiz-option input[type="radio"] {
-            margin-right: 12px;
-        }
+.section-padding {
+    padding: 80px 0;
+}
 
-        #quiz-result .alert {
-            font-size: 1.1rem;
-            margin-top: 20px;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        @media (max-width: 600px) {
-            .quiz-card .card-body { padding: 1rem; }
-            .quiz-option { font-size: 0.98rem; padding: 8px 8px; }
-        }
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.btn {
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #13547a;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #0d3d5a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn-outline-primary {
+    color: #13547a;
+    border: 2px solid #13547a;
+}
+
+.btn-outline-primary:hover {
+    background: #13547a;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-control {
+    border: 2px solid rgba(19, 84, 122, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #13547a;
+    box-shadow: 0 0 0 3px rgba(19, 84, 122, 0.1);
+}
+
+/* Specific styles for quiz */
+.quiz-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.quiz-option {
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(19, 84, 122, 0.1);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+    background: rgba(19, 84, 122, 0.05);
+    transform: translateX(5px);
+}
+
+/* Specific styles for flashcards */
+.flashcard {
+    perspective: 1000px;
+    margin-bottom: 30px;
+    height: 300px;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background: #13547a;
+    color: white;
+}
+
+.custom-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.custom-output {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .hero-section {
+        padding: 40px 0;
+    }
+    
+    .flashcard {
+        height: 250px;
+    }
+}
     </style>
 </head>
 <body id="top">
 <main>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi-back"></i>
                 <span>Apollo AI</span>
             </a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
-            <?php endif; ?>
+            <div class="ms-auto">
+                <a href="main.php" class="btn btn-outline-primary me-2">
+                    <i class="bi bi-arrow-left-circle"></i> Back to Dashboard
+                </a>
+                <a href="logout.php" class="btn btn-primary">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </a>
+            </div>
         </div>
     </nav>
     <section class="hero-section d-flex justify-content-center align-items-center" style="padding-bottom:40px;">
@@ -223,29 +437,106 @@ function renderQuiz(quiz) {
 
     document.getElementById('submit-quiz').onclick = function() {
         let correct = 0, total = quiz.length;
+        const perQ = [];
+
         quiz.forEach((q, idx) => {
             const selected = document.querySelector(`.quiz-option[data-q="${idx}"].selected`);
+            // clear classes
             document.querySelectorAll(`.quiz-option[data-q="${idx}"]`).forEach(o => {
                 o.classList.remove('correct', 'incorrect');
             });
+
+            const correctIdx = "ABCD".indexOf((q.answer || '').trim().toUpperCase());
+            const correctLabel = "ABCD"[correctIdx] || '';
+            const correctText = q.options && q.options[correctIdx] ? q.options[correctIdx] : '';
+
             if (selected) {
                 const selectedIdx = parseInt(selected.getAttribute('data-idx'));
-                const correctIdx = "ABCD".indexOf(q.answer.trim().toUpperCase());
                 if (selectedIdx === correctIdx) {
                     correct++;
                     selected.classList.add('correct');
+                    perQ.push({ idx, ok: true, correctLabel, correctText, selectedLabel: "ABCD"[selectedIdx] });
                 } else {
                     selected.classList.add('incorrect');
-                    
+                    // highlight the correct option
                     document.querySelectorAll(`.quiz-option[data-q="${idx}"]`).forEach(o => {
-                        if (parseInt(o.getAttribute('data-idx')) === correctIdx) {
-                            o.classList.add('correct');
-                        }
+                        if (parseInt(o.getAttribute('data-idx')) === correctIdx) o.classList.add('correct');
                     });
+                    perQ.push({ idx, ok: false, correctLabel, correctText, selectedLabel: "ABCD"[selectedIdx] });
                 }
+            } else {
+                // no answer selected
+                document.querySelectorAll(`.quiz-option[data-q="${idx}"]`).forEach(o => {
+                    if (parseInt(o.getAttribute('data-idx')) === correctIdx) o.classList.add('correct');
+                });
+                perQ.push({ idx, ok: false, correctLabel, correctText, selectedLabel: null });
             }
         });
-        document.getElementById('quiz-result').innerHTML = `<div class="alert alert-info">You got ${correct} out of ${total} correct.</div>`;
+
+        // Build result display with per-question feedback and explanation buttons
+        let resultHtml = `<div class="alert alert-info">You got ${correct} out of ${total} correct.</div>`;
+        resultHtml += `<div class="list-group">`;
+        perQ.forEach(item => {
+            const q = quiz[item.idx];
+            const statusClass = item.ok ? 'text-success' : 'text-danger';
+            const statusText = item.ok ? 'Correct' : 'Incorrect';
+            const yourAnswer = item.selectedLabel ? `Your answer: <strong>${item.selectedLabel}</strong>` : `<em>No answer selected</em>`;
+
+            // Explanation area: use provided explanation if present, otherwise add a "Show explanation" button
+            let explanationHtml = '';
+            if (!item.ok) {
+                if (q.explanation && q.explanation.trim() !== '') {
+                    explanationHtml = `<div class="small text-muted mt-2">${q.explanation}</div>`;
+                } else {
+                    explanationHtml = `<div class="mt-2"><button class="btn btn-sm btn-link explain-btn" data-q="${item.idx}">Show explanation</button></div><div id="explain-${item.idx}" class="mt-2"></div>`;
+                }
+            }
+
+            resultHtml += `<div class="list-group-item">
+                <div><strong>Q${item.idx + 1}:</strong> ${q.question}</div>
+                <div class="${statusClass}" style="margin-top:6px;"><strong>${statusText}</strong></div>
+                <div style="margin-top:6px;">${yourAnswer}</div>
+                <div style="margin-top:6px;"><strong>Correct:</strong> ${item.correctLabel} &mdash; ${item.correctText}</div>
+                ${explanationHtml}
+            </div>`;
+        });
+        resultHtml += `</div>`;
+
+        document.getElementById('quiz-result').innerHTML = resultHtml;
+        // smooth scroll to results
+        document.getElementById('quiz-result').scrollIntoView({ behavior: 'smooth' });
+
+        // attach handlers for explanation buttons (use closure 'quiz' array)
+        document.querySelectorAll('.explain-btn').forEach(btn => {
+            btn.addEventListener('click', async function() {
+                const idx = this.getAttribute('data-q');
+                const el = document.getElementById('explain-' + idx);
+                if (!el) return;
+                if (el.dataset.loading === '1') return;
+                el.dataset.loading = '1';
+                el.innerHTML = '<div class="small text-muted">Loading explanation…</div>';
+                try {
+                    const questionText = quiz[idx].question;
+                    const correctIdx = "ABCD".indexOf((quiz[idx].answer || '').trim().toUpperCase());
+                    const correctText = quiz[idx].options && quiz[idx].options[correctIdx] ? quiz[idx].options[correctIdx] : '';
+                    const resp = await fetch('quiz.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams({ action: 'explain', question: questionText, correct: correctText })
+                    });
+                    const json = await resp.json();
+                    if (json.explanation) {
+                        el.innerHTML = `<div class="small text-muted">${json.explanation}</div>`;
+                    } else {
+                        el.innerHTML = `<div class="small text-danger">${json.error || 'No explanation available.'}</div>`;
+                        el.dataset.loading = '0';
+                    }
+                } catch (err) {
+                    el.innerHTML = `<div class="small text-danger">Fetch error: ${err.message}</div>`;
+                    el.dataset.loading = '0';
+                }
+            });
+        });
     };
 }
 </script>
@@ -257,8 +548,13 @@ function renderQuiz(quiz) {
 <script id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
-$('#output').html(marked.parse(json.result));
-if (window.MathJax) MathJax.typesetPromise([document.getElementById('output')]);
+/* kept for compatibility with other code portions that may set #output */
+try {
+  if (typeof json !== 'undefined' && json && json.result) {
+    $('#output').html(marked.parse(json.result));
+    if (window.MathJax) MathJax.typesetPromise([document.getElementById('output')]);
+  }
+} catch(e){}
 </script>
 </body>
 </html>
