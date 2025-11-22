@@ -1013,3 +1013,75 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+{"id":"gen-1763579900-JPSIRQ7Lqr5mLC3HP0xh","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1763579900,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"The Pythagorean theorem is a fundamental principle in geometry, specifically dealing with right-angled triangles. It states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be expressed with the formula:\n\n\\[ a^2 + b^2 = c^2 \\]\n\nHere, \\( c \\) represents the length of the hypotenuse, while \\( a \\) and \\( b \\) are the lengths of the triangle's other two sides. This theorem is widely used in mathematics for solving problems involving right-angled triangles.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_cbf1785567","usage":{"prompt_tokens":118,"completion_tokens":140,"total_tokens":258,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is the pythagoreum therum"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1763579915-DxinN6AzMkHJz3aMwd15","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1763579915,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Memorizing the Pythagorean theorem can be easier with a few strategies:\n\n1. **Understand the Concept**: Rather than just memorizing the formula, understand what it represents. Visualize a right-angled triangle and how the squares of the two shorter sides add up to the square of the hypotenuse.\n\n2. **Use a Mnemonic**: Create a simple phrase to help remember the formula, such as \"A squared plus B squared equals C squared.\"\n\n3. **Practice Drawing**: Draw right-angled triangles and label the sides. Write the formula next to your drawings to reinforce the relationship between the sides.\n\n4. **Solve Problems**: Practice solving problems using the Pythagorean theorem. The more you apply it, the more familiar it will become.\n\n5. **Relate to Real-Life**: Consider real-world applications of the theorem, such as determining the length of a diagonal in a rectangular room or a computer screen.\n\n6. **Use Online Tools and Apps**: There are many educational apps and websites that offer interactive exercises to help reinforce your understanding and memory of the theorem.\n\nBy combining these techniques, you can better remember and understand the Pythagorean theorem.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_cbf1785567","usage":{"prompt_tokens":272,"completion_tokens":244,"total_tokens":516,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0,"audio_tokens":0,"accepted_prediction_tokens":0,"rejected_prediction_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is the pythagoreum therum"
+        },
+        {
+            "role": "assistant",
+            "content": "The Pythagorean theorem is a fundamental principle in geometry, specifically dealing with right-angled triangles. It states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be expressed with the formula:\n\n\\[ a^2 + b^2 = c^2 \\]\n\nHere, \\( c \\) represents the length of the hypotenuse, while \\( a \\) and \\( b \\) are the lengths of the triangle's other two sides. This theorem is widely used in mathematics for solving problems involving right-angled triangles."
+        },
+        {
+            "role": "user",
+            "content": "how to memorise it better"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}

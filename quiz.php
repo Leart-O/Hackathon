@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Put the API key in one place so both handlers can use it
-$apiKey = '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'; // existing key in your file
+$apiKey = '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'; // existing key in your file
 
 // Explain endpoint: returns one short sentence explanation for a question's correct answer
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'explain') {

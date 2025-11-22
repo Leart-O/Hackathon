@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';// 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 alternative key if not working
+    $apiKey = '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';// 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
