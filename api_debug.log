@@ -1013,3 +1013,155 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1761206034-VNrW5VVOtsaPcXLJUOCX","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1761206034,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Light is a form of electromagnetic radiation that is visible to the human eye. It is a small part of the electromagnetic spectrum, which includes other types of radiation such as radio waves, microwaves, infrared, ultraviolet, X-rays, and gamma rays. Light is essential for vision and is responsible for the various colors that we see. It behaves both as a wave and as a particle, a concept known as wave-particle duality. The speed of light in a vacuum is approximately 299,792 kilometers per second (about 186,282 miles per second), which is considered the universal speed limit for the transfer of information and energy.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_cbf1785567","usage":{"prompt_tokens":111,"completion_tokens":128,"total_tokens":239,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "what is light"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1761206819-pWmGwd3X0b6wyWmEF5mW","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1761206819,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy in the form of glucose. During photosynthesis, these organisms take in carbon dioxide from the air and water from the soil, and using sunlight absorbed by chlorophyll (the green pigment in plants), they produce glucose and oxygen. The overall chemical equation for photosynthesis can be summarized as:\n\n\\[ 6 \\, \\text{CO}_2 + 6 \\, \\text{H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6 \\, \\text{O}_2 \\]\n\nThis process is crucial for life on Earth as it provides the oxygen we breathe and forms the foundation of the food chain.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_cbf1785567","usage":{"prompt_tokens":113,"completion_tokens":175,"total_tokens":288,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "What is photosythesis"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1761208773-tYZJTgqn71mJWGyylg15","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1761208773,"choices":[{"logprobs":null,"finish_reason":"length","native_finish_reason":"length","index":0,"message":{"role":"assistant","content":"Memorization is a skill that can be improved with practice and the use of effective strategies. Here are some techniques that might help:\n\n1. **Repetition:** Regularly reviewing information helps transfer it from short-term to long-term memory. Space out repetition over days or weeks for better retention.\n\n2. **Chunking:** Break down large amounts of information into smaller, manageable parts. For example, memorize a long number by dividing it into chunks.\n\n3. **Mnemonics:** Use mnemonic devices such as acronyms or rhymes to make information easier to remember. For example, \"PEMDAS\" for the order of operations in math (Parentheses, Exponents, Multiplication and Division, Addition and Subtraction).\n\n4. **Visualization:** Create mental images or diagrams to represent the information. This can make abstract concepts more concrete and memorable.\n\n5. **Association:** Connect new information to something you already know. This creates a mental link that can help with recall.\n\n6. **Storytelling:** Turn the information into a story. Narratives are easier to remember than isolated facts.\n\n7. **Teach Someone Else:** Explaining the material to another person can reinforce your understanding and memory.\n\n8. **Use Multiple Senses:** Engage different senses by reading aloud, writing things down, or using visual aids.\n\n9. **Mind Maps:** Create a mind map to organize information visually. This helps in seeing the connections between different pieces of information.\n\n10. **Active Engagement:** Rather than pass","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_cbf1785567","usage":{"prompt_tokens":300,"completion_tokens":300,"total_tokens":600,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "What is photosythesis"
+        },
+        {
+            "role": "assistant",
+            "content": "Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy in the form of glucose. During photosynthesis, these organisms take in carbon dioxide from the air and water from the soil, and using sunlight absorbed by chlorophyll (the green pigment in plants), they produce glucose and oxygen. The overall chemical equation for photosynthesis can be summarized as:\n\n\\[ 6 \\, \\text{CO}_2 + 6 \\, \\text{H}_2\\text{O} + \\text{light energy} \\rightarrow \\text{C}_6\\text{H}_{12}\\text{O}_6 + 6 \\, \\text{O}_2 \\]\n\nThis process is crucial for life on Earth as it provides the oxygen we breathe and forms the foundation of the food chain."
+        },
+        {
+            "role": "user",
+            "content": "how to memorise"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
+HTTP Code: 200
+Response: 
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+
+         
+{"id":"gen-1761209134-f7GuQenU2E33WvYoOxY5","provider":"OpenAI","model":"openai/gpt-4o","object":"chat.completion","created":1761209134,"choices":[{"logprobs":null,"finish_reason":"stop","native_finish_reason":"stop","index":0,"message":{"role":"assistant","content":"Biodiversity refers to the variety and variability of life on Earth. It encompasses the different species of plants, animals, fungi, and microorganisms, the genetic differences within these species, the ecosystems they form, and the ecological processes, such as nutrient cycling and energy flow, that sustain life. Biodiversity is crucial for ecosystem stability, resilience, and providing services such as food, clean water, and air, as well as cultural and recreational benefits. Conserving biodiversity is important for maintaining the health of the planet and its inhabitants.","refusal":null,"reasoning":null}}],"system_fingerprint":"fp_65564d8ba5","usage":{"prompt_tokens":111,"completion_tokens":105,"total_tokens":216,"prompt_tokens_details":{"cached_tokens":0,"audio_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+Error: 
+Payload: {
+    "model": "openai\/gpt-4o",
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: \"Sorry, I can only answer questions about academic topics.\" Do not provide any other information."
+        },
+        {
+            "role": "user",
+            "content": "What is biodiversity"
+        }
+    ],
+    "max_tokens": 300,
+    "temperature": 0.7
+}
