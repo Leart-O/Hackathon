@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = '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'; // 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 alternative key if not working
+    $apiKey = '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'; // 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 alternative key if not working
     $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
 
     $payload = [

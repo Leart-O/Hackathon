@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Put the API key in one place so both handlers can use it
-$apiKey = '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'; // existing key in your file
+$apiKey = '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'; // existing key in your file
 
 // Explain endpoint: returns one short sentence explanation for a question's correct answer
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'explain') {
@@ -516,9 +516,21 @@ function renderQuiz(quiz) {
                 el.dataset.loading = '1';
                 el.innerHTML = '<div class="small text-muted">Loading explanation…</div>';
                 try {
-                    const questionText = quiz[idx].question;
-                    const correctIdx = "ABCD".indexOf((quiz[idx].answer || '').trim().toUpperCase());
-                    const correctText = quiz[idx].options && quiz[idx].options[correctIdx] ? quiz[idx].options[correctIdx] : '';
+                    const questionText = (quiz[idx].question || '').toString().trim();
+                    const answerRaw = (quiz[idx].answer || '').toString().trim();
+                    // try to map A/B/C/D to option text; fallback to answerRaw
+                    let correctText = '';
+                    const correctIdx = "ABCD".indexOf(answerRaw.toUpperCase());
+                    if (correctIdx >= 0 && Array.isArray(quiz[idx].options) && quiz[idx].options[correctIdx]) {
+                        correctText = quiz[idx].options[correctIdx];
+                    } else if (answerRaw.length > 0) {
+                        correctText = answerRaw; // fallback to whatever the answer field contains
+                    }
+                    if (!questionText || !correctText) {
+                        el.innerHTML = `<div class="small text-danger">Cannot fetch explanation: missing question or correct answer text.</div>`;
+                        el.dataset.loading = '0';
+                        return;
+                    }
                     const resp = await fetch('quiz.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
