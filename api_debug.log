@@ -902,3 +902,97 @@ Payload: {
     "max_tokens": 300,
     "temperature": 0.7
 }
+Error: API Error (HTTP 410): https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead.
+Error: API Error (HTTP 404): Not Found
+=== API Request ===
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 410
+Response: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
+
+Error: API Error (HTTP 410): https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead.
+=== API Request ===
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 404
+Response: Not Found
+
+Error: API Error (HTTP 404): Model 'Qwen/Qwen2.5-7B-Instruct' not found. Please check the model name in Settings. Visit https://huggingface.co/models?pipeline_tag=text-generation to find available models.
+=== API Request ===
+Model: meta-llama/Llama-2-7b-chat-hf
+HTTP Code: 404
+Response: Not Found
+
+Error: API Error (HTTP 404): Model 'meta-llama/Llama-2-7b-chat-hf' not found. Please check the model name in Settings. Visit https://huggingface.co/models?pipeline_tag=text-generation to find available models.
+=== API Request ===
+Model: meta-llama/Meta-Llama-3-8B-Instruct
+HTTP Code: 404
+Response: Not Found
+
+Error: API Error (HTTP 404): Model 'meta-llama/Meta-Llama-3-8B-Instruct' not found. Please check the model name in Settings. Visit https://huggingface.co/models?pipeline_tag=text-generation to find available models.
+=== API Request ===
+Model: HuggingFaceH4/zephyr-7b-beta
+HTTP Code: 404
+Response: Not Found
+
+Error: API Error (HTTP 404): Model 'HuggingFaceH4/zephyr-7b-beta' not found. Please check the model name in Settings. Visit https://huggingface.co/models?pipeline_tag=text-generation to find available models.
+=== Hugging Face API Request ===
+Endpoint: https://api-inference.huggingface.co/models/Qwen%2FQwen2.5-7B-Instruct
+Prompt: Say "Hello, World!"...
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 410
+Response: {"error":"https://api-inference.huggingface.co is no longer supported. Please use https://router.huggingface.co instead."}
+
+=== Hugging Face API Request ===
+Endpoint: https://router.huggingface.co/models/Qwen%2FQwen2.5-7B-Instruct
+Prompt: Say "Hello, World!"...
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 404
+Response: Not Found
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZd3scr-62bZhn-9d6b885de9ef205d",
+  "object": "chat.completion",
+  "created": 1772571227,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 8410284720017072000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "Hello, World!",
+        "tool_calls": []
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 35,
+    "completion_tokens": 5,
+    "total_toke
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZd4FZB-4YNCb4-9d6b8a2b8d193992",
+  "object": "chat.completion",
+  "created": 1772571301,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 6056890969476585000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "Photosynthesis is a process used by plants, algae, and some bacteria to convert light energy from the sun into chemical energy stored in gluc
+

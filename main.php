@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'db.php';
+require 'huggingface_api.php';
 
 // Ensure user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -43,54 +44,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $messages = $db->query("SELECT role, content FROM messages WHERE conversation_id = $conversation_id ORDER BY created_at")
                    ->fetchAll(PDO::FETCH_ASSOC);
 
-    // Call OpenRouter
-    $apiKey = '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'; // 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 alternative key if not working
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-
-    $payload = [
-        'model' => 'openai/gpt-4o',
-        'messages' => [],
-        'max_tokens' => 300,
-        'temperature' => 0.7,
-    ];
-
+    // Prepare messages for Hugging Face API
+    $api_messages = [];
+    
     // Add a strict system prompt for academic topics only
-    array_unshift($payload['messages'], [
+    $api_messages[] = [
         'role' => 'system',
         'content' => 'You are a helpful assistant for students. Only answer questions related to school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in school and stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
-    ]);
+    ];
 
     foreach ($messages as $msg) {
-        $payload['messages'][] = [
+        $api_messages[] = [
             'role' => $msg['role'],
             'content' => $msg['content']
         ];
     }
 
-    $ch = curl_init($endpoint);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey,
-        'HTTP-Referer: https://yourdomain.com',
-        'X-Title: Hackathon Chat'
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    $response = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $curlError = curl_error($ch);
-    curl_close($ch);
-
-    
-    file_put_contents('api_debug.log', "HTTP Code: $httpCode\nResponse: $response\nError: $curlError\n", FILE_APPEND);
-    file_put_contents('api_debug.log', "Payload: " . json_encode($payload, JSON_PRETTY_PRINT) . "\n", FILE_APPEND);
-
-    $data = json_decode($response, true);
-    if (isset($data['choices'][0]['message']['content'])) {
-        $ai_text = $data['choices'][0]['message']['content'];
-    } else {
-        $ai_text = 'Error: no response';
+    // Call Hugging Face API
+    try {
+        $response = callHuggingFaceAPI($api_messages, $user_id, $db, 500);
+        $ai_text = trim($response);
+    } catch (Exception $e) {
+        file_put_contents('api_debug.log', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
+        $ai_text = 'Error: ' . $e->getMessage();
     }
 
     
@@ -196,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_conversation_i
                     <li class="nav-item"><a class="nav-link" href="index.php#section_5">Contact</a></li>
                 </ul>
                 <div class="d-none d-lg-block">
-                    <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    <a href="settings.php" class="btn btn-outline-secondary ms-2" title="Settings"><i class="bi bi-gear"></i> Settings</a>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <a href="logout.php" class="btn btn-outline-danger ms-2">Logout</a>
                     <?php endif; ?>

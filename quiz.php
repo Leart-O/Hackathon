@@ -1,12 +1,14 @@
 <?php
 session_start();
+require 'huggingface_api.php';
+require 'db.php';
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Put the API key in one place so both handlers can use it
-$apiKey = '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'; // existing key in your file
+$user_id = $_SESSION['user_id'];
 
 // Explain endpoint: returns one short sentence explanation for a question's correct answer
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'explain') {
@@ -19,109 +21,66 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
 
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-    $payload = [
-        'model' => 'openai/gpt-4o',
-        'messages' => [
+    try {
+        $messages = [
             [
                 'role' => 'system',
-                'content' => 'You are a helpful teaching assistant. Provide a single concise (1-2 sentence) plain-English explanation why the correct answer is correct for the provided multiple-choice question. Do not output JSON—only the explanation text.'
+                'content' => 'Provide a single concise (1-2 sentence) explanation why the correct answer is correct for the provided question.'
             ],
             [
                 'role' => 'user',
-                'content' => "Question: {$question}\nCorrect answer (text): {$correct}\nProvide a short explanation for why that answer is correct."
+                'content' => "Question: {$question}\nCorrect answer: {$correct}\nProvide a short explanation."
             ]
-        ],
-        'max_tokens' => 80,
-        'temperature' => 0.2,
-    ];
-
-    $ch = curl_init($endpoint);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey,
-        'X-Title: Hackathon Explain'
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    $response = curl_exec($ch);
-    $curlError = curl_error($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    if ($curlError) {
-        echo json_encode(['error' => "cURL error: $curlError"]);
-        exit;
-    }
-    if ($httpCode >= 400) {
-        echo json_encode(['error' => "API error (HTTP $httpCode). Response: " . ($response ?: 'empty')]);
-        exit;
-    }
-
-    $data = json_decode($response, true);
-    $content = $data['choices'][0]['message']['content'] ?? $response ?? '';
-    $explanation = trim(strip_tags($content));
-    if ($explanation === '') {
-        echo json_encode(['error' => 'No explanation returned by API.']);
-    } else {
-        echo json_encode(['explanation' => $explanation]);
+        ];
+        
+        $response = callHuggingFaceAPI($messages, $user_id, $db, 150);
+        $explanation = trim(strip_tags($response));
+        
+        if ($explanation === '') {
+            echo json_encode(['error' => 'No explanation returned.']);
+        } else {
+            echo json_encode(['explanation' => $explanation]);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['error' => $e->getMessage()]);
     }
     exit;
 }
 
-// Original quiz generation handler (unchanged except moved $apiKey is used)
+// Quiz generation handler
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-    $payload = [
-        'model' => 'openai/gpt-4o',
-        'messages' => [
+    
+    try {
+        $messages = [
             [
                 'role' => 'system',
-                'content' => 'You are a helpful assistant for students. Only generate quizzes for school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in schooland stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If the user asks for a quiz on a non-academic topic (like TV shows, celebrities, pop culture, etc.), respond with a plain English message (not JSON) that says: "Sorry, I can only generate quizzes for academic topics." If the topic is academic, output ONLY valid JSON, and nothing else, in the following format: [{"question":"...","options":["A","B","C","D"],"answer":"A"}, ...]. Surround your JSON with <json>...</json> tags.'
+                'content' => 'You are a helpful assistant for students. Generate quizzes in JSON format for academic topics. Output ONLY valid JSON in this format: [{"question":"...","options":["A","B","C","D"],"answer":"A"}, ...]. Surround your JSON with <json>...</json> tags.'
             ],
             [
                 'role' => 'user',
                 'content' => "Create a short quiz (3-5 questions, multiple choice only) to help me study the following topic:\n\n" . $summary
             ]
-        ],
-        'max_tokens' => 700,
-        'temperature' => 0.7,
-    ];
-    $ch = curl_init($endpoint);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey,
-        'HTTP-Referer: https://yourdomain.com',
-        'X-Title: Hackathon Quiz'
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    $response = curl_exec($ch);
-    $curlError = curl_error($ch);
-    curl_close($ch);
-    if ($curlError) {
-        echo json_encode(['error' => "cURL error: $curlError"]);
-        exit;
-    }
-
-    $data = json_decode($response, true);
-    $content = $data['choices'][0]['message']['content'] ?? '';
-
-    if (preg_match('/<json>(.*?)<\/json>/is', $content, $m)) {
-        $json_str = trim($m[1]);
-    } else {
-        $json_str = $content;
-    }
-    $quiz = json_decode($json_str, true);
-    if (is_array($quiz)) {
-        echo json_encode(['quiz' => $quiz]);
-    } else {
-        $refusal = trim(strip_tags($content));
-        echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Try again or change api key (emergency api key in comment on the code next to the current one)']);
+        ];
+        
+        $response = callHuggingFaceAPI($messages, $user_id, $db, 1000);
+        
+        if (preg_match('/<json>(.*?)<\/json>/is', $response, $m)) {
+            $json_str = trim($m[1]);
+        } else {
+            $json_str = $response;
+        }
+        
+        $quiz = json_decode($json_str, true);
+        if (is_array($quiz)) {
+            echo json_encode(['quiz' => $quiz]);
+        } else {
+            $refusal = trim(strip_tags($response));
+            echo json_encode(['error' => $refusal ?: 'Failed to parse quiz. Please try again.']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['error' => $e->getMessage()]);
     }
     exit;
 }

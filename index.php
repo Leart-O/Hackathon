@@ -5,69 +5,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prompt'])) {
     header('Content-Type: application/json');
 
     $prompt = trim($_POST['prompt']);
-    $apiKey = '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'; // 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 alternative key if not working
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-
-    $payload = [
-        'model' => 'openai/gpt-4o',
-        'messages' => [
-            [
-                'role' => 'system',
-                'content' => 'You are a helpful assistant for students. Only give answers that are below 300 character limit so that a short and helpful description is given. Only answer questions related to school, academic, or scholarly topics (such as Ai(artificial intelligence), math, science, history, language arts, and other subjects taught in school). If a user asks about anything not related to school or learning, respond ONLY with: "Sorry, I can only answer questions about academic topics." Do not provide any other information.'
-            ],
-            [
-                'role' => 'user',
-                'content' => $prompt
-            ],
-        ],
-        'max_tokens'  => 300,
-        'temperature' => 0.7,
+    
+    // For unauthenticated users on the index page, show a message
+    $response = [
+        'success' => false,
+        'error' => 'Please log in or sign up to use the AI features.'
     ];
-
-    $ch = curl_init($endpoint);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey,
-        'HTTP-Referer: https://yourdomain.com',
-        'X-Title: Hackathon Index'
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-
-    $response  = curl_exec($ch);
-    $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $curlError = curl_error($ch);
-    curl_close($ch);
-
-    if ($curlError) {
-        echo json_encode(['error' => "cURL error: $curlError"]);
-        exit;
-    }
-
-    $data = json_decode($response, true);
-
-    if (isset($data['choices'][0]['message']['content'])) {
-        $ai_response = $data['choices'][0]['message']['content'];
-        $char_limit = 300;
-        if (strlen($ai_response) > $char_limit) {
-            $preview = substr($ai_response, 0, $char_limit);
-            echo json_encode([
-                'result' => nl2br(html_entity_decode($preview)),
-                'conversation_data' => json_encode($payload['messages'])
-            ]);
-        } else {
-            echo json_encode([
-                'result' => html_entity_decode($ai_response),
-                'conversation_data' => json_encode($payload['messages'])
-            ]);
-        }
-    } else {
-        echo json_encode([
-            'error'        => "Unexpected response structure (HTTP $httpCode)",
-            'raw_response' => $response
-        ]);
-    }
+    
+    echo json_encode($response);
     exit;
 }
 ?>

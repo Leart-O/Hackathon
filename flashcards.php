@@ -1,5 +1,7 @@
 <?php
 session_start();
+require 'huggingface_api.php';
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
@@ -8,56 +10,39 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $apiKey = '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';// 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 alternative key if not working
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
-    $payload = [
-        'model' => 'openai/gpt-4o',
-        'messages' => [
+    $user_id = $_SESSION['user_id'];
+    require 'db.php';
+    
+    try {
+        $messages = [
             [
                 'role' => 'system',
-                'content' => 'You are a helpful assistant for students. Only generate flashcards for school, academic, or scholarly topics (such as math, science, history, language arts, and other subjects taught in schooland stuff related about Artificial Intelligence like its importance or use in our world how it works and informational stuff about AI). If the user asks for flashcards on a non-academic topic (like TV shows, celebrities, pop culture, etc.), respond with a plain English message (not JSON) that says: "Sorry, I can only generate flashcards for academic topics." If the topic is academic, output ONLY valid JSON, and nothing else, in the following format: [{"question":"...","answer":"..."}, ...]. Surround your JSON with <json>...</json> tags.'
+                'content' => 'You are a helpful assistant for students. Generate flashcards in JSON format for academic topics. Output ONLY valid JSON in this format: [{"question":"...","answer":"..."}, ...]. Surround your JSON with <json>...</json> tags.'
             ],
             [
                 'role' => 'user',
                 'content' => "Create a set of flashcards (question/term and answer/explanation) to help me study the following topic:\n\n" . $summary
             ]
-        ],
-        'max_tokens' => 700,
-        'temperature' => 0.7,
-    ];
-    $ch = curl_init($endpoint);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Bearer ' . $apiKey,
-        'HTTP-Referer: https://yourdomain.com',
-        'X-Title: Hackathon Flashcards'
-    ]);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    $response = curl_exec($ch);
-    $curlError = curl_error($ch);
-    curl_close($ch);
-    if ($curlError) {
-        echo json_encode(['error' => "cURL error: $curlError"]);
-        exit;
-    }
-    $data = json_decode($response, true);
-    $content = $data['choices'][0]['message']['content'] ?? '';
-
-    // Extract JSON between <json>...</json>
-    if (preg_match('/<json>(.*?)<\/json>/is', $content, $m)) {
-        $json_str = trim($m[1]);
-    } else {
-        $json_str = $content;
-    }
-    $cards = json_decode($json_str, true);
-    if (is_array($cards)) {
-        echo json_encode(['cards' => $cards]);
-    } else {
-        // If not valid JSON, show the AI's message as an error
-        $refusal = trim(strip_tags($content));
-        echo json_encode(['error' => $refusal ?: 'Failed to parse flashcards. Try again or change api key (emergency api key in comment on the code next to the current one)']);
+        ];
+        
+        $response = callHuggingFaceAPI($messages, $user_id, $db, 1000);
+        
+        // Extract JSON between <json>...</json>
+        if (preg_match('/<json>(.*?)<\/json>/is', $response, $m)) {
+            $json_str = trim($m[1]);
+        } else {
+            $json_str = $response;
+        }
+        
+        $cards = json_decode($json_str, true);
+        if (is_array($cards)) {
+            echo json_encode(['cards' => $cards]);
+        } else {
+            $refusal = trim(strip_tags($response));
+            echo json_encode(['error' => $refusal ?: 'Failed to parse flashcards. Please try again.']);
+        }
+    } catch (Exception $e) {
+        echo json_encode(['error' => $e->getMessage()]);
     }
     exit;
 }
