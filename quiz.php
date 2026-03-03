@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Put the API key in one place so both handlers can use it
-$apiKey = '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'; // existing key in your file
+$apiKey = 'ae3cbeb223514333b41533db94d51ec3'; // Get your API key from https://aimlapi.com/
 
 // Explain endpoint: returns one short sentence explanation for a question's correct answer
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'explain') {
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
 
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
+    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['summary'])) {
     header('Content-Type: application/json');
     $summary = trim($_POST['summary']);
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
+    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
     $payload = [
         'model' => 'openai/gpt-4o',
         'messages' => [

@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['question'])) {
     $messages = $db->query("SELECT role, content FROM messages WHERE conversation_id = $conversation_id ORDER BY created_at")
                    ->fetchAll(PDO::FETCH_ASSOC);
 
-    // Call OpenRouter
-    $apiKey = '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'; // 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 alternative key if not working
-    $endpoint = 'https://openrouter.ai/api/v1/chat/completions';
+    // Call aimlapi.com
+    $apiKey = 'ae3cbeb223514333b41533db94d51ec3'; // Get your API key from https://aimlapi.com/
+    $endpoint = 'https://api.aimlapi.com/v1/chat/completions';
 
     $payload = [
         'model' => 'openai/gpt-4o',
