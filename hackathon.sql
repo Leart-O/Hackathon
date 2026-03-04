@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2025 at 08:23 PM
+-- Generation Time: Mar 04, 2026 at 08:45 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,15 @@ CREATE TABLE `conversations` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `conversations`
+--
+
+INSERT INTO `conversations` (`id`, `user_id`, `title`, `created_at`) VALUES
+(16, 3, 'Untitled Conversation', '2026-03-03 20:55:20'),
+(17, 3, 'Untitled Conversation', '2026-03-04 14:27:05'),
+(18, 3, 'Untitled Conversation', '2026-03-04 15:08:40');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +57,18 @@ CREATE TABLE `messages` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `conversation_id`, `role`, `content`, `created_at`) VALUES
+(43, 16, 'user', 'what is photosynthesis', '2026-03-03 20:55:20'),
+(44, 16, 'assistant', 'Photosynthesis is a process used by plants, algae, and some bacteria to convert light energy from the sun into chemical energy stored in glucose. This process primarily occurs in the chloroplasts of plant cells, where chlorophyll captures sunlight. The overall chemical equation for photosynthesis is:\n\n\\[ 6CO_2 + 6H_2O + light energy \\rightarrow C_6H_{12}O_6 + 6O_2 \\]\n\nThis means that carbon dioxide and water, in the presence of light energy, are converted into glucose and oxygen. Oxygen is released as a byproduct.', '2026-03-03 20:55:22'),
+(45, 17, 'user', 'what is photosynthesis', '2026-03-04 14:27:05'),
+(46, 17, 'assistant', 'Photosynthesis is the process by which plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy stored in glucose. This process occurs primarily in the chloroplasts of plant cells, where chlorophyll captures sunlight. The overall equation for photosynthesis is:\n\n\\[ 6CO_2 + 6H_2O + light energy \\rightarrow C_6H_{12}O_6 + 6O_2 \\]\n\nThis means that carbon dioxide and water, in the presence of light energy, are converted into glucose and oxygen. The oxygen is released into the atmosphere as a byproduct.', '2026-03-04 14:27:07'),
+(47, 18, 'user', 'What is photosynthesis', '2026-03-04 15:08:40'),
+(48, 18, 'assistant', 'Photosynthesis is a process used by plants, algae, and some bacteria to convert light energy, usually from the sun, into chemical energy stored in glucose. This process primarily occurs in the chloroplasts of plant cells, where chlorophyll, a green pigment, captures light energy. The overall chemical equation for photosynthesis can be summarized as:\n\n\\[ 6CO_2 + 6H_2O + light energy \\rightarrow C_6H_{12}O_6 + 6O_2 \\]\n\nThis means that carbon dioxide and water, in the presence of light energy, are converted into glucose and oxygen. Oxygen is released as a byproduct.', '2026-03-04 15:08:42');
+
 -- --------------------------------------------------------
 
 --
@@ -59,15 +80,17 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `huggingface_token` varchar(500) DEFAULT NULL,
+  `huggingface_model` varchar(255) DEFAULT 'Qwen/Qwen2.5-7B-Instruct'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `created_at`) VALUES
-(1, 'Leart', 'leart@gmail.com', '$2y$10$XwaJxZ3tmJaM738VVAME.el2vKZODOFzdWQnj2X5Ax0e3Rt2nJh9G', '2025-05-24 12:59:24');
+INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `created_at`, `huggingface_token`, `huggingface_model`) VALUES
+(3, 'newbie', 'new@gmail.com', '$2y$10$ugT.GOlEVg326VIhiIFGu.dLHs7JDBM0MwoR6esku3eoIZs78wgEG', '2026-03-03 20:41:15', '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', 'Qwen/Qwen2.5-7B-Instruct');
 
 --
 -- Indexes for dumped tables
@@ -103,19 +126,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
