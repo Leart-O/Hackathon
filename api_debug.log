@@ -996,3 +996,163 @@ Response: {
         "role": "assistant",
         "content": "Photosynthesis is a process used by plants, algae, and some bacteria to convert light energy from the sun into chemical energy stored in gluc
 
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZidgA3-4YNCb4-9d718ecb3b5d343f",
+  "object": "chat.completion",
+  "created": 1772634405,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 12101037633876271000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy, usually from the sun, into chemical energy sto
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZidjvc-62bZhn-9d718f1a5e0a3982",
+  "object": "chat.completion",
+  "created": 1772634418,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 17959514301590696000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "<json>\n[{\"question\":\"What was the immediate trigger for the outbreak of World War I in 1914?\", \"options\":[\"The assassination of Arch
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZidyfP-62bZhn-9d71903b0c50b06c",
+  "object": "chat.completion",
+  "created": 1772634464,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 12310972882435700000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "The assassination of Archduke Franz Ferdinand immediately triggered World War I because it ignited a series of complex alliances and tension
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZieEk4-4YNCb4-9d7191782f142427",
+  "object": "chat.completion",
+  "created": 1772634515,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 2564368773478447600,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "<json>\n[{\"question\":\"What was the date of the attack on Pearl Harbor that led to the United States entering World War II?\",\"answer\":\"
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZirTmJ-62bZhn-9d71cbb39d1f33bd",
+  "object": "chat.completion",
+  "created": 1772636900,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 12819483769972118000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "Photosynthesis is a process used by plants, algae, and some bacteria to convert light energy, usually from the sun, into chemical energy sto
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZircun-62bZhn-9d71cc73c93d1715",
+  "object": "chat.completion",
+  "created": 1772636931,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 10960779606454874000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "<json>\n[{\"question\":\"What is the formula for the area of a circle?\",\"options\":[\"A) πr^2\",\"B) 2πr\",\"C) πd^2\",\"D) 2πd\"],\"a
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZirk46-4YNCb4-9d71cd0a1c6405af",
+  "object": "chat.completion",
+  "created": 1772636955,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 6973086205979369000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "The formula A = πr^2 is correct because it calculates the area by multiplying pi (π) with the radius (r) squared, which covers the total ar
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZirryo-62bZhn-9d71cd9b896b3b68",
+  "object": "chat.completion",
+  "created": 1772636978,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 14659650113943790000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "<json>\n[{\"question\":\"What sparked the start of World War II?\",\"answer\":\"The immediate spark was the invasion of Poland by Nazi Germa
+
