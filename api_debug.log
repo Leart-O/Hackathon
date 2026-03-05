@@ -1156,3 +1156,30 @@ Response: {
         "role": "assistant",
         "content": "<json>\n[{\"question\":\"What sparked the start of World War II?\",\"answer\":\"The immediate spark was the invasion of Poland by Nazi Germa
 
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 401
+Response: {"error":"User Access Token \"ApolloAI\" is expired"}
+
+Error: API Error (HTTP 401): Invalid or expired Hugging Face token. Get a new token at https://huggingface.co/settings/tokens
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 200
+Response: {
+  "id": "oZqgd9Z-62bZhn-9d792acec9d9b086",
+  "object": "chat.completion",
+  "created": 1772714196,
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "prompt": [],
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "seed": 5404017383753324000,
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "role": "assistant",
+        "content": "Neurons are the fundamental units of the nervous system. They are specialized cells designed to transmit information throughout the body. Neu
+
