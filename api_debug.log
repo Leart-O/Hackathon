@@ -1183,3 +1183,28 @@ Response: {
         "role": "assistant",
         "content": "Neurons are the fundamental units of the nervous system. They are specialized cells designed to transmit information throughout the body. Neu
 
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: Qwen/Qwen2.5-7B-Instruct
+HTTP Code: 400
+Response: {"error":{"message":"The requested model 'Qwen/Qwen2.5-7B-Instruct' is not supported by any provider you have enabled.","type":"invalid_request_error","param":"model","code":"model_not_supported"}}
+
+Error: API Error (HTTP 400): The requested model 'Qwen/Qwen2.5-7B-Instruct' is not supported by any provider you have enabled.
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: meta-llama/Llama-3.2-1B-Instruct
+HTTP Code: 200
+Response: {"id":"chatcmpl-b308b1a1f68d4f5b9d149046d46c9dd0","object":"chat.completion","created":1772719382,"model":"meta-llama/llama-3.2-1b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight, carbon dioxide, and water into glucose and oxygen. This process is essential for life on Earth, as it provides the primary source of energy for most living organisms.\n\nHere's a simplified overview of the 
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: meta-llama/Llama-3.2-1B-Instruct
+HTTP Code: 200
+Response: {"id":"chatcmpl-c1c6a543a192476eb2899cba9b32eddd","object":"chat.completion","created":1772719674,"model":"meta-llama/llama-3.2-1b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"Here's a short quiz on mathematics to help you study:\n\n```\n{\n  \"question\": \"What is the value of x in the equation 2x + 5 = 11?\",\n  \"options\": [\"2\", \"3\", \"4\", \"5\"],\n  \"answer\": \"3\"\n}\n{\n  \"question\": \"What is the area of a rectangle with a length of 6 cm and a width 
+
+=== Hugging Face Router API Request ===
+Endpoint: https://router.huggingface.co/v1/chat/completions
+Model: meta-llama/Llama-3.2-1B-Instruct
+HTTP Code: 200
+Response: {"id":"chatcmpl-90cf3773926f4ac8b540d4e617fb97fa","object":"chat.completion","created":1772719710,"model":"meta-llama/llama-3.2-1b-instruct","choices":[{"index":0,"message":{"role":"assistant","content":"Here's a set of flashcards for the biology topic:\n\n```\n{\n  \"question\": \"What is the main function of the mitochondria?\",\n  \"answer\": \"To generate energy for the cell through cellular respiration\",\n  \"term\": \"Mitochondria\",\n  \"explanation\": \"The mitochondria are the powerhou
+
